@@ -8,12 +8,14 @@
 
 - 以萬華區公所 2026-02-12 官方名冊確認 33 筆萬華區社區發展協會，並以社會局全市資料交叉比對其中 31 筆。
 - 完成 Sprint 1 主檔：33 筆 `CommunityProfile` CSV／JSON、協會清冊、個別 Markdown 檔案與資料品質報告。
+- 完成 Sprint 2 活動層：轉錄 2023–2026 臺北市社會局核定表 50 筆方案，涵蓋 18 個協會；其餘 15 個協會列入來源 TODO。
+- 建立活動年度／類型統計、33 協會來源覆蓋矩陣、CSV／JSON 與 Dashboard 資料。
 - 建立 CSV、JSON、JSON Schema 與六工作表人工檢閱檔。
 - 建立 Google Maps 整合的萬華研究 Dashboard。
 - 建立資料驗證、JSON 匯出、網站、報告、Release 與 GitHub Pages 工作流程。
 - 建立研究方法、資料字典、評分模型與 Sprint 驗收規範。
 
-活動、獎項、補助、SDG 與 AI 排名資料目前仍含清楚標示的合成教學示例，不代表任何協會的真實成果，也不得用於正式排名。
+活動資料已排除合成示例，但目前只證明政府核定與預定期間，不證明方案已完成。獎項、補助、SDG 與 AI 排名資料仍為清楚標示的合成教學示例，不代表任何協會的真實成果，也不得用於正式排名。
 
 ## 專案入口
 
@@ -23,6 +25,8 @@
 | [`PROJECT_SPEC.md`](PROJECT_SPEC.md) | 資料、研究、Dashboard、網站、報告與 Release 規格 |
 | [`docs/sprints/README.md`](docs/sprints/README.md) | Sprint 1–6 的交付與驗收條件 |
 | [`docs/methodology.md`](docs/methodology.md) | 研究方法與證據標準 |
+| [`docs/activity-research.md`](docs/activity-research.md) | 2023–2026 活動查核與 33 協會覆蓋矩陣 |
+| [`docs/activity-statistics.md`](docs/activity-statistics.md) | 核定方案年度與類型統計 |
 | [`docs/evaluation-model.md`](docs/evaluation-model.md) | 可解釋評分模型與公平性護欄 |
 | [`docs/data-dictionary.md`](docs/data-dictionary.md) | 六組資料集欄位定義 |
 | [`ROADMAP.md`](ROADMAP.md) | 目前進度與下一階段 |
@@ -50,6 +54,7 @@ node research/scripts/check-markdown-links.mjs
 node research/scripts/validate-data-layer.mjs
 node research/scripts/export-data-layer-json.mjs --check
 node research/scripts/build-wanhua-database.mjs
+node research/scripts/build-community-activities.mjs
 node research/scripts/build-static-site.mjs
 
 cd dashboard

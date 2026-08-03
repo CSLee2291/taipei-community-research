@@ -1,2 +1,2 @@
 award_id,community_id,activity_id,award_name_zh,awarding_body_zh,award_level,award_category_zh,awarded_date,award_year,rank_or_result,evidence_url,source_title,source_accessed_on,record_status,data_quality_flag,is_example,created_at,updated_at,schema_version,notes
-AWD-EXAMPLE-0001,COM-0001,ACT-EXAMPLE-0001,社區健康促進示例獎（非真實）,教學示例機構（非真實）,city,健康促進,2025-12-01,2025,示例優等,,研究資料層教學示例,2026-08-03,draft,synthetic_example,true,2026-08-03T10:00:00Z,2026-08-03T10:00:00Z,1.0.0,合成範例，不代表任何組織實際得獎。
+AWD-EXAMPLE-0001,COM-0001,,社區健康促進示例獎（非真實）,教學示例機構（非真實）,city,健康促進,2025-12-01,2025,示例優等,,研究資料層教學示例,2026-08-03,draft,synthetic_example,true,2026-08-03T10:00:00Z,2026-08-03T10:00:00Z,1.0.0,合成範例，不代表任何組織實際得獎。

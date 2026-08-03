@@ -69,8 +69,12 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 !data/processed/wanhua-community-associations.json
+!data/processed/wanhua-community-activity-statistics.json
 !data/processed/README.md
 !data/processed/data-layer-examples.xlsx
+
+# Local inspection traces generated while reviewing workbook artifacts
+*.inspect.ndjson
 
 # Generated publication output
 dashboard/output/

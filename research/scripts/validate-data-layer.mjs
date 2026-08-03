@@ -106,6 +106,9 @@ for (const datasetName of datasetNames) {
 const communityIds = new Set(loaded.CommunityProfile.map((record) => record.community_id));
 const activityById = new Map(loaded.CommunityActivities.map((record) => [record.activity_id, record]));
 
+assert.equal(communityIds.size, loaded.CommunityProfile.length, "CommunityProfile: duplicate community_id");
+assert.equal(activityById.size, loaded.CommunityActivities.length, "CommunityActivities: duplicate activity_id");
+
 for (const datasetName of datasetNames.slice(1)) {
   for (const record of loaded[datasetName]) {
     assert(communityIds.has(record.community_id), `${datasetName}: unresolved community_id ${record.community_id}`);
@@ -123,12 +126,21 @@ for (const record of loaded.CommunityAIRanking) {
   assert(record.confidence_score >= 0 && record.confidence_score <= 1, `${record.ranking_id}: confidence_score out of range`);
 }
 
-for (const datasetName of datasetNames.slice(1)) {
+for (const datasetName of ["CommunityAwards", "CommunitySDGs", "CommunityFunding", "CommunityAIRanking"]) {
   assert(loaded[datasetName].every((record) => record.is_example && record.data_quality_flag === "synthetic_example"), `${datasetName}: sample records must be explicitly synthetic`);
+}
+
+for (const record of loaded.CommunityActivities) {
+  assert.equal(record.is_example, false, `${record.activity_id}: published activity cannot be synthetic`);
+  assert.equal(record.record_status, "verified", `${record.activity_id}: activity must be source-verified`);
+  assert.equal(record.evidence_level, "A", `${record.activity_id}: Sprint 2 activities require government evidence`);
+  assert(record.source_url && record.source_title && record.source_accessed_on, `${record.activity_id}: activity source is incomplete`);
+  assert(record.start_date || record.end_date || record.notes?.includes("原始預定期間"), `${record.activity_id}: activity period is missing`);
+  assert.equal(record.participant_count, null, `${record.activity_id}: planned beneficiaries cannot be published as actual participants`);
 }
 
 console.log(JSON.stringify({
   status: "passed",
   datasets: Object.fromEntries(datasetNames.map((name) => [name, loaded[name].length])),
-  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "ranking_formula", "synthetic_example_guard"],
+  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "unique_keys", "ranking_formula", "synthetic_example_guard", "formal_activity_evidence_guard"],
 }, null, 2));

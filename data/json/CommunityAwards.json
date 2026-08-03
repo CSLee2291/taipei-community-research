@@ -7,7 +7,7 @@
     {
       "award_id": "AWD-EXAMPLE-0001",
       "community_id": "COM-0001",
-      "activity_id": "ACT-EXAMPLE-0001",
+      "activity_id": null,
       "award_name_zh": "社區健康促進示例獎（非真實）",
       "awarding_body_zh": "教學示例機構（非真實）",
       "award_level": "city",

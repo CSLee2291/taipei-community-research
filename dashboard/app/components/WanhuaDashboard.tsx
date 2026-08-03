@@ -59,13 +59,41 @@ export type Database = {
   communities: Community[];
 };
 
+export type ActivityStatistics = {
+  schema_version: string;
+  generated_at: string;
+  evidence_scope: "approved_plan";
+  record_count: number;
+  association_population: number;
+  association_coverage_count: number;
+  association_without_matched_activity_count: number;
+  by_year: Record<string, number>;
+  by_type: Record<string, number>;
+  interpretation_note_zh: string;
+};
+
+const activityTypeLabels: Record<string, string> = {
+  health_promotion: "健康促進",
+  education: "教育與學習",
+  volunteer_service: "志工培力",
+  culture: "文化與節慶",
+  ecology: "生態",
+  disaster_preparedness: "防災",
+  care_service: "社區照顧",
+  digital_learning: "數位學習",
+  youth_engagement: "青年與親子",
+  food_support: "食物支持",
+  environment: "環境",
+  other: "其他",
+};
+
 type SortMode = "name" | "established-asc" | "source-updated-desc";
 
 function display(value: string | number | null | undefined) {
   return value === null || value === undefined || value === "" ? "未提供" : String(value);
 }
 
-export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database: Database; googleMapsApiKey?: string }) {
+export function WanhuaDashboard({ database, activities, googleMapsApiKey = "" }: { database: Database; activities: ActivityStatistics; googleMapsApiKey?: string }) {
   const [query, setQuery] = useState("");
   const [village, setVillage] = useState("all");
   const [quality, setQuality] = useState("all");
@@ -97,6 +125,10 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
   const coordinateRecords = filtered.filter((community): community is Community & { latitude: number; longitude: number } => community.latitude !== null && community.longitude !== null);
   const decadeEntries = Object.entries(database.quality_summary.establishment_decade_counts);
   const maxDecadeCount = Math.max(...decadeEntries.map(([, count]) => count));
+  const activityYearEntries = Object.entries(activities.by_year);
+  const activityTypeEntries = Object.entries(activities.by_type).filter(([, count]) => count > 0);
+  const maxActivityYearCount = Math.max(...activityYearEntries.map(([, count]) => count));
+  const maxActivityTypeCount = Math.max(...activityTypeEntries.map(([, count]) => count));
 
   const resetFilters = () => {
     setQuery("");
@@ -128,7 +160,7 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
         </div>
         <div className="hero-copy">
           <p>以萬華區公所官方名冊定義母體，並用臺北市社會局全市資料補充可交叉驗證的成立時間、立案資料與空間座標。每個數字都保留來源，也保留不知道的部分。</p>
-          <div className="hero-note"><strong>資料邊界</strong><span>名冊沒有營運狀態、活動、補助、獎項或 SDG 資料；本儀表板不從缺席的欄位推論結論。</span></div>
+          <div className="hero-note"><strong>資料邊界</strong><span>活動層來自社會局核定表，只證明方案獲核定與預定期間，不代表已完成；本儀表板不從缺席的紀錄推論零活動。</span></div>
         </div>
       </section>
 
@@ -138,6 +170,34 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
           <article className="metric"><span className="metric-label">地址涵蓋里別</span><strong className="metric-value">{database.quality_summary.unique_address_villages}</strong><span className="metric-foot">由官方地址文字抽取</span></article>
           <article className="metric"><span className="metric-label">核心欄位完整率</span><strong className="metric-value">{Math.round((database.quality_summary.complete_core_records / database.coverage.record_count) * 100)}%</strong><span className="metric-foot">日期、立案與座標</span></article>
           <article className="metric"><span className="metric-label">已知成立年份</span><strong className="metric-value">{database.quality_summary.earliest_known_establishment_year}–{String(database.quality_summary.latest_known_establishment_year).slice(2)}</strong><span className="metric-foot">{database.coverage.record_count - Object.values(database.quality_summary.establishment_decade_counts).reduce((sum, count) => sum + count, 0)} 筆成立日期未提供</span></article>
+        </section>
+
+        <div className="section-heading" id="activities">
+          <h2>2023–2026 核定方案</h2>
+          <p>統計單位是臺北市政府社會局核定表中的方案紀錄，不是完成場次或實際參與人次。</p>
+        </div>
+
+        <section className="activity-overview" aria-labelledby="activities">
+          <div className="activity-stat-strip">
+            <article><span>核定方案紀錄</span><strong>{activities.record_count}</strong></article>
+            <article><span>有匹配協會</span><strong>{activities.association_coverage_count}<small> / {activities.association_population}</small></strong></article>
+            <article><span>待補活動來源</span><strong>{activities.association_without_matched_activity_count}</strong></article>
+          </div>
+          <div className="activity-grid">
+            <article className="panel activity-panel">
+              <div className="panel-header"><h3>年度分布</h3><span>核定方案紀錄</span></div>
+              <div className="activity-bars">
+                {activityYearEntries.map(([year, count]) => <div className="activity-bar-row" key={year}><strong>{year}</strong><div className="activity-bar-track"><div className="activity-bar-fill year" style={{ width: `${(count / maxActivityYearCount) * 100}%` }} /></div><span>{count}</span></div>)}
+              </div>
+            </article>
+            <article className="panel activity-panel">
+              <div className="panel-header"><h3>類型分布</h3><span>僅顯示有紀錄類型</span></div>
+              <div className="activity-bars compact">
+                {activityTypeEntries.map(([type, count]) => <div className="activity-bar-row" key={type}><strong>{activityTypeLabels[type] ?? type}</strong><div className="activity-bar-track"><div className="activity-bar-fill" style={{ width: `${(count / maxActivityTypeCount) * 100}%` }} /></div><span>{count}</span></div>)}
+              </div>
+            </article>
+          </div>
+          <p className="activity-boundary">{activities.interpretation_note_zh}　<a href="/data/wanhua-community-activities.json" download>下載活動統計 JSON</a></p>
         </section>
 
         <div className="section-heading">
@@ -207,7 +267,7 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
 
       <footer className="site-footer">
         <div><strong>萬華社區研究</strong>萬華區公所與臺北市政府社會局 2026 官方資料衍生研究 · 存取日 {database.generated_on}</div>
-        <div className="footer-links"><a href="/data/wanhua-community-associations.json" download>下載 JSON</a><a href={database.attribution.license_url} target="_blank" rel="noreferrer">授權條款</a></div>
+        <div className="footer-links"><a href="/data/wanhua-community-associations.json" download>協會 JSON</a><a href="/data/wanhua-community-activities.json" download>活動統計 JSON</a><a href={database.attribution.license_url} target="_blank" rel="noreferrer">授權條款</a></div>
       </footer>
     </div>
   );
