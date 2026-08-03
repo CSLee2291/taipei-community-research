@@ -126,10 +126,10 @@
 | `indicator_name_zh` | string | 否 | 使用的成果指標名稱。 | — |
 | `observed_value` | number | 否 | 觀測值。 | — |
 | `observed_unit` | string | 否 | 觀測值單位。 | — |
-| `confidence_score` | number | 是 | 對應信心水準，0–1。 | — |
+| `confidence_score` | number | 是 | 對應信心水準，0–1；未人工覆核候選不得高於 0.5。 | — |
 | `assessment_method` | string | 是 | 評估方式。 | `rule_based`、`human_review`、`mixed` |
 | `assessed_on` | date | 是 | 評估日期。 | `YYYY-MM-DD` |
-| `reviewer_role` | string | 是 | 審核者角色，不保存非必要姓名。 | — |
+| `reviewer_role` | string | 是 | 審核者角色；AI 輔助候選使用 `ai_assisted_candidate`，不保存非必要姓名。 | — |
 | `source_title` | string | 否 | 證據來源名稱。 | — |
 | `source_url` | uri | 否 | 證據來源網址。 | 絕對 URL |
 | `record_status` | string | 是 | 資料生命週期狀態。 | `draft`、`verified`、`derived`、`archived` |
@@ -138,7 +138,14 @@
 | `created_at` | datetime | 是 | 專案紀錄建立時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `updated_at` | datetime | 是 | 專案紀錄最後更新時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `schema_version` | string | 是 | 此筆紀錄遵循的資料結構版本。 | — |
-| `notes` | string | 否 | 補充說明、限制或資料處理註記。 | — |
+| `notes` | string | 否 | 補充說明、限制或資料處理註記；未覆核候選必須明示「待人工覆核」。 | — |
+
+### SDG 候選發布規則
+
+- `rule_based` 且未人工覆核的紀錄只能是 `draft`。
+- 候選可源自真實活動，因此 `is_example=false`；但候選數不得視為正式涵蓋或成效。
+- 沒有活動成果證據時，`indicator_name_zh`、`observed_value` 與 `observed_unit` 保持空值。
+- 只有人工覆核後才可使用 `human_review` 或 `mixed`，並需記錄覆核角色、日期與理由。
 
 ## CommunityFunding
 

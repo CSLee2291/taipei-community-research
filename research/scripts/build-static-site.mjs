@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const outputRoot = path.join(repositoryRoot, "website/dist");
 const database = JSON.parse(await fs.readFile(path.join(repositoryRoot, "data/processed/wanhua-community-associations.json"), "utf8"));
+const sdgCandidates = JSON.parse(await fs.readFile(path.join(repositoryRoot, "data/processed/wanhua-community-sdg-candidate-statistics.json"), "utf8"));
 
 function escapeHtml(value) {
   return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
@@ -41,8 +42,16 @@ const html = `<!doctype html>
       <article><strong>${database.quality_summary.complete_core_records}</strong><span>核心欄位完整</span></article>
       <article><strong>${database.quality_summary.unique_address_villages}</strong><span>地址涵蓋里別</span></article>
     </section>
+    <section><h2>SDG 候選審查</h2><p>以下數字是依核定方案名稱與活動類型產生的低信心候選，不是正式 SDG 涵蓋、成果或排名；目前人工覆核與正式映射均為 0。</p>
+      <div class="metrics" aria-label="SDG 候選分布">
+        <article><strong>${sdgCandidates.by_goal["3"]}</strong><span>SDG 3 候選</span></article>
+        <article><strong>${sdgCandidates.by_goal["4"]}</strong><span>SDG 4 候選</span></article>
+        <article><strong>${sdgCandidates.by_goal["10"]}</strong><span>SDG 10 候選</span></article>
+        <article><strong>${sdgCandidates.by_goal["11"]}</strong><span>SDG 11 候選</span></article>
+      </div>
+    </section>
     <section><h2>研究資料目錄</h2><p>名冊列入不代表目前仍在營運；活動、補助、獎項與 SDG 成效需另行蒐證。</p><div class="table-wrap"><table><thead><tr><th>研究 ID</th><th>社區</th><th>里別</th><th>成立日期</th><th>座標</th></tr></thead><tbody>${rows}</tbody></table></div></section>
-    <section><h2>研究資源</h2><div class="links"><a href="data/wanhua-community-associations.json">下載萬華 JSON</a><a href="data/data-layer/CommunityProfile.json">CommunityProfile JSON</a><a href="https://wanhua-community-research.cs-lee.chatgpt.site">互動儀表板</a><a href="https://github.com/CSLee2291/taipei-community-research">GitHub Repository</a></div></section>
+    <section><h2>研究資源</h2><div class="links"><a href="data/wanhua-community-associations.json">下載萬華 JSON</a><a href="data/wanhua-community-sdg-candidates.json">SDG 候選統計</a><a href="data/data-layer/CommunityProfile.json">CommunityProfile JSON</a><a href="https://wanhua-community-research.cs-lee.chatgpt.site">互動儀表板</a><a href="https://github.com/CSLee2291/taipei-community-research">GitHub Repository</a></div></section>
   </main>
   <footer>資料來源：臺北市政府社會局。依政府資料開放授權條款第 1 版利用。</footer>
 </body>
@@ -56,6 +65,7 @@ await Promise.all([
   fs.writeFile(path.join(outputRoot, ".nojekyll"), "", "utf8"),
   fs.copyFile(path.join(repositoryRoot, "dashboard/public/og.png"), path.join(outputRoot, "assets/og.png")),
   fs.copyFile(path.join(repositoryRoot, "data/processed/wanhua-community-associations.json"), path.join(outputRoot, "data/wanhua-community-associations.json")),
+  fs.copyFile(path.join(repositoryRoot, "data/processed/wanhua-community-sdg-candidate-statistics.json"), path.join(outputRoot, "data/wanhua-community-sdg-candidates.json")),
 ]);
 
 for (const file of await fs.readdir(path.join(repositoryRoot, "data/json"))) {

@@ -10,12 +10,13 @@
 - 完成 Sprint 1 主檔：33 筆 `CommunityProfile` CSV／JSON、協會清冊、個別 Markdown 檔案與資料品質報告。
 - 完成 Sprint 2 活動層：轉錄 2023–2026 臺北市社會局核定表 50 筆方案，涵蓋 18 個協會；其餘 15 個協會列入來源 TODO。
 - 建立活動年度／類型統計、33 協會來源覆蓋矩陣、CSV／JSON 與 Dashboard 資料。
+- 完成 Sprint 3 待審成果：為 50 筆核定方案各建立一筆低信心 SDG 候選、覆核佇列、候選涵蓋分析與雷達圖；正式映射仍為 0。
 - 建立 CSV、JSON、JSON Schema 與六工作表人工檢閱檔。
 - 建立 Google Maps 整合的萬華研究 Dashboard。
 - 建立資料驗證、JSON 匯出、網站、報告、Release 與 GitHub Pages 工作流程。
 - 建立研究方法、資料字典、評分模型與 Sprint 驗收規範。
 
-活動資料已排除合成示例，但目前只證明政府核定與預定期間，不證明方案已完成。獎項、補助、SDG 與 AI 排名資料仍為清楚標示的合成教學示例，不代表任何協會的真實成果，也不得用於正式排名。
+活動資料已排除合成示例，但目前只證明政府核定與預定期間，不證明方案已完成。SDG 資料是由正式活動衍生的待人工覆核候選，不是合成示例，也不是正式 SDG 成效。獎項、補助與 AI 排名資料仍為合成教學示例。
 
 ## 專案入口
 
@@ -27,6 +28,8 @@
 | [`docs/methodology.md`](docs/methodology.md) | 研究方法與證據標準 |
 | [`docs/activity-research.md`](docs/activity-research.md) | 2023–2026 活動查核與 33 協會覆蓋矩陣 |
 | [`docs/activity-statistics.md`](docs/activity-statistics.md) | 核定方案年度與類型統計 |
+| [`docs/sdg-candidate-mapping.md`](docs/sdg-candidate-mapping.md) | SDG 候選規則、證據邊界與框架來源 |
+| [`docs/sdg-review-queue.md`](docs/sdg-review-queue.md) | 50 筆待人工覆核候選 |
 | [`docs/evaluation-model.md`](docs/evaluation-model.md) | 可解釋評分模型與公平性護欄 |
 | [`docs/data-dictionary.md`](docs/data-dictionary.md) | 六組資料集欄位定義 |
 | [`ROADMAP.md`](ROADMAP.md) | 目前進度與下一階段 |
@@ -55,6 +58,7 @@ node research/scripts/validate-data-layer.mjs
 node research/scripts/export-data-layer-json.mjs --check
 node research/scripts/build-wanhua-database.mjs
 node research/scripts/build-community-activities.mjs
+node research/scripts/build-community-sdg-candidates.mjs
 node research/scripts/build-static-site.mjs
 
 cd dashboard

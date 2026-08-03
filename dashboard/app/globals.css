@@ -378,6 +378,7 @@ a {
 }
 
 .panel {
+  min-width: 0;
   border: 1px solid var(--line);
   background: var(--surface);
 }
@@ -807,6 +808,150 @@ a {
   font-size: 12px;
 }
 
+.sdg-overview {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.sdg-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--red);
+  color: white;
+}
+
+.sdg-stat-strip article {
+  display: flex;
+  min-height: 112px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 26px;
+  border-right: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.sdg-stat-strip article:last-child {
+  border-right: 0;
+}
+
+.sdg-stat-strip span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.sdg-stat-strip strong {
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.sdg-stat-strip small {
+  font-size: 17px;
+}
+
+.sdg-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
+  gap: 22px;
+  padding: 22px;
+}
+
+.sdg-radar-panel,
+.sdg-goal-panel {
+  box-shadow: none;
+}
+
+.sdg-radar {
+  display: block;
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.sdg-radar-grid,
+.sdg-radar-axis {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.sdg-radar-data {
+  fill: rgb(20 92 79 / 0.22);
+  stroke: var(--teal);
+  stroke-width: 3;
+}
+
+.sdg-radar-dot {
+  fill: var(--red);
+  stroke: white;
+  stroke-width: 2;
+}
+
+.sdg-radar text {
+  fill: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sdg-radar .sdg-radar-count {
+  fill: var(--muted);
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.sdg-goal-panel {
+  padding-bottom: 24px;
+}
+
+.sdg-goal-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+
+.sdg-goal-list div {
+  display: flex;
+  min-height: 84px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 20px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.sdg-goal-list div:nth-child(even) {
+  border-right: 0;
+}
+
+.sdg-goal-list strong {
+  color: var(--teal);
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: 22px;
+}
+
+.sdg-goal-list span,
+.sdg-goal-panel > p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.sdg-goal-panel > p {
+  margin: 22px 20px;
+}
+
+.sdg-download {
+  display: inline-block;
+  margin: 0 20px;
+  padding: 10px 13px;
+  background: var(--teal);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -841,6 +986,7 @@ a {
   .hero,
   .analysis-grid,
   .activity-grid,
+  .sdg-grid,
   .directory-grid {
     grid-template-columns: 1fr;
   }
@@ -855,6 +1001,19 @@ a {
 
   .activity-stat-strip {
     grid-template-columns: 1fr;
+  }
+
+  .sdg-stat-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .sdg-stat-strip article {
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.2);
+  }
+
+  .sdg-stat-strip article:last-child {
+    border-bottom: 0;
   }
 
   .activity-stat-strip article {

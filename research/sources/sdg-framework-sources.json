@@ -1,0 +1,39 @@
+{
+  "registry_version": "1.0.0",
+  "accessed_on": "2026-08-03",
+  "scope": "Sprint 3 SDG candidate framework references",
+  "sources": {
+    "UN-SDG": {
+      "title": "The 17 Goals",
+      "publisher": "United Nations Department of Economic and Social Affairs",
+      "url": "https://sdgs.un.org/goals",
+      "license_note": "Reference definitions only; no UN emblem or icon assets are redistributed."
+    },
+    "UN-SDG-3": {
+      "title": "Goal 3: Good Health and Well-Being",
+      "publisher": "United Nations Department of Economic and Social Affairs",
+      "url": "https://sdgs.un.org/goals/goal3"
+    },
+    "UN-SDG-4": {
+      "title": "Goal 4: Quality Education",
+      "publisher": "United Nations Department of Economic and Social Affairs",
+      "url": "https://sdgs.un.org/goals/goal4"
+    },
+    "UN-SDG-10": {
+      "title": "Goal 10: Reduced Inequalities",
+      "publisher": "United Nations Department of Economic and Social Affairs",
+      "url": "https://sdgs.un.org/goals/goal10"
+    },
+    "UN-SDG-11": {
+      "title": "Goal 11: Sustainable Cities and Communities",
+      "publisher": "United Nations Department of Economic and Social Affairs",
+      "url": "https://sdgs.un.org/goals/goal11"
+    },
+    "TW-SDG": {
+      "title": "臺灣永續發展目標",
+      "publisher": "行政院國家永續發展委員會",
+      "url": "https://ncsd.ndc.gov.tw/Fore/SDGList",
+      "note": "用於在地政策語境；本資料集仍以聯合國 17 項目標編號作交換欄位。"
+    }
+  }
+}

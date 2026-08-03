@@ -105,9 +105,11 @@ for (const datasetName of datasetNames) {
 
 const communityIds = new Set(loaded.CommunityProfile.map((record) => record.community_id));
 const activityById = new Map(loaded.CommunityActivities.map((record) => [record.activity_id, record]));
+const sdgIds = new Set(loaded.CommunitySDGs.map((record) => record.community_sdg_id));
 
 assert.equal(communityIds.size, loaded.CommunityProfile.length, "CommunityProfile: duplicate community_id");
 assert.equal(activityById.size, loaded.CommunityActivities.length, "CommunityActivities: duplicate activity_id");
+assert.equal(sdgIds.size, loaded.CommunitySDGs.length, "CommunitySDGs: duplicate community_sdg_id");
 
 for (const datasetName of datasetNames.slice(1)) {
   for (const record of loaded[datasetName]) {
@@ -126,7 +128,7 @@ for (const record of loaded.CommunityAIRanking) {
   assert(record.confidence_score >= 0 && record.confidence_score <= 1, `${record.ranking_id}: confidence_score out of range`);
 }
 
-for (const datasetName of ["CommunityAwards", "CommunitySDGs", "CommunityFunding", "CommunityAIRanking"]) {
+for (const datasetName of ["CommunityAwards", "CommunityFunding", "CommunityAIRanking"]) {
   assert(loaded[datasetName].every((record) => record.is_example && record.data_quality_flag === "synthetic_example"), `${datasetName}: sample records must be explicitly synthetic`);
 }
 
@@ -139,8 +141,27 @@ for (const record of loaded.CommunityActivities) {
   assert.equal(record.participant_count, null, `${record.activity_id}: planned beneficiaries cannot be published as actual participants`);
 }
 
+const sdgCandidatesByActivity = new Map();
+for (const record of loaded.CommunitySDGs) {
+  assert.equal(record.is_example, false, `${record.community_sdg_id}: SDG candidate cannot be synthetic`);
+  assert.equal(record.record_status, "draft", `${record.community_sdg_id}: unreviewed candidate must remain draft`);
+  assert.equal(record.data_quality_flag, "low_evidence", `${record.community_sdg_id}: candidate must disclose low evidence`);
+  assert.equal(record.assessment_method, "rule_based", `${record.community_sdg_id}: candidate must be rule based before human review`);
+  assert.equal(record.reviewer_role, "ai_assisted_candidate", `${record.community_sdg_id}: reviewer role must disclose AI assistance`);
+  assert(record.activity_id, `${record.community_sdg_id}: candidate requires an activity foreign key`);
+  assert(record.confidence_score > 0 && record.confidence_score <= 0.5, `${record.community_sdg_id}: unreviewed confidence must remain low`);
+  assert.equal(record.indicator_name_zh, null, `${record.community_sdg_id}: candidate cannot invent an outcome indicator`);
+  assert.equal(record.observed_value, null, `${record.community_sdg_id}: candidate cannot invent an observed result`);
+  assert.equal(record.observed_unit, null, `${record.community_sdg_id}: candidate cannot invent an observed unit`);
+  assert(record.notes?.includes("待人工覆核"), `${record.community_sdg_id}: missing human-review warning`);
+  const candidateCount = (sdgCandidatesByActivity.get(record.activity_id) ?? 0) + 1;
+  sdgCandidatesByActivity.set(record.activity_id, candidateCount);
+}
+assert.equal(sdgCandidatesByActivity.size, loaded.CommunityActivities.length, "CommunitySDGs: every activity requires one primary candidate");
+assert([...sdgCandidatesByActivity.values()].every((count) => count === 1), "CommunitySDGs: primary candidate must be unique per activity");
+
 console.log(JSON.stringify({
   status: "passed",
   datasets: Object.fromEntries(datasetNames.map((name) => [name, loaded[name].length])),
-  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "unique_keys", "ranking_formula", "synthetic_example_guard", "formal_activity_evidence_guard"],
+  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "unique_keys", "ranking_formula", "synthetic_example_guard", "formal_activity_evidence_guard", "sdg_candidate_review_guard"],
 }, null, 2));

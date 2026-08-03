@@ -43,6 +43,9 @@ jobs:
       - name: Rebuild Wanhua activity research outputs
         run: node research/scripts/build-community-activities.mjs
 
+      - name: Rebuild Wanhua SDG candidate outputs
+        run: node research/scripts/build-community-sdg-candidates.mjs
+
       - name: Validate research data
         run: node research/scripts/validate-data-layer.mjs
 
@@ -70,7 +73,16 @@ jobs:
             docs/activity-research.md \
             docs/activity-source-audit.md \
             docs/activity-statistics.md \
-            research/sources/wanhua-association-online-source-audit.csv
+            research/sources/wanhua-association-online-source-audit.csv \
+            data/csv/CommunitySDGs.csv \
+            data/json/CommunitySDGs.json \
+            data/processed/wanhua-community-sdg-candidate-statistics.json \
+            dashboard/app/data/wanhua-community-sdg-candidates.json \
+            dashboard/public/data/wanhua-community-sdg-candidates.json \
+            docs/sdg-candidate-mapping.md \
+            docs/sdg-coverage-analysis.md \
+            docs/sdg-review-queue.md \
+            report/figures/sdg-candidate-radar.svg
 
       - name: Check Python syntax
         run: python -m compileall -q research/scripts

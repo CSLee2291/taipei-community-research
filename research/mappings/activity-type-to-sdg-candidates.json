@@ -1,0 +1,93 @@
+{
+  "mapping_version": "1.0.0",
+  "status": "candidate_only",
+  "review_requirement": "Every generated mapping requires human review before formal publication.",
+  "goals": {
+    "3": {
+      "label_zh": "健康與福祉",
+      "target": "3.4",
+      "target_summary_zh": "促進心理健康與福祉，並透過預防與治療降低非傳染性疾病早逝。",
+      "reference_key": "UN-SDG-3"
+    },
+    "4": {
+      "label_zh": "優質教育",
+      "target": "4.7",
+      "target_summary_zh": "促進永續發展所需知識與技能，以及文化多樣性與文化對永續發展的貢獻。",
+      "reference_key": "UN-SDG-4"
+    },
+    "10": {
+      "label_zh": "減少不平等",
+      "target": "10.2",
+      "target_summary_zh": "促進所有人不分年齡、身分或其他條件的社會、經濟與政治包容。",
+      "reference_key": "UN-SDG-10"
+    },
+    "11": {
+      "label_zh": "永續城市與社區",
+      "target": "11.3",
+      "target_summary_zh": "提升包容、永續都市化及參與式人類聚落規劃與管理能力。",
+      "reference_key": "UN-SDG-11"
+    }
+  },
+  "activity_type_rules": {
+    "health_promotion": {
+      "goal": 3,
+      "target": "3.4",
+      "alignment_type": "direct",
+      "confidence_score": 0.45,
+      "rationale_zh": "方案類型直接涉及健康促進，但核定資料沒有健康成果指標。"
+    },
+    "education": {
+      "goal": 4,
+      "target": "4.7",
+      "alignment_type": "indirect",
+      "confidence_score": 0.35,
+      "rationale_zh": "方案類型涉及非正式學習或社區觀摩，但尚未證明學習成果或永續教育內容。"
+    },
+    "volunteer_service": {
+      "goal": 11,
+      "target": "11.3",
+      "alignment_type": "enabling",
+      "confidence_score": 0.35,
+      "rationale_zh": "志工培力可能支持社區參與能力，但核定資料沒有參與式治理成果。"
+    },
+    "culture": {
+      "goal": 11,
+      "target": "11.4",
+      "alignment_type": "indirect",
+      "confidence_score": 0.3,
+      "rationale_zh": "文化或節慶方案可能連結文化保存，但活動存在不等於已保護文化遺產。"
+    },
+    "care_service": {
+      "goal": 10,
+      "target": "10.2",
+      "alignment_type": "indirect",
+      "confidence_score": 0.4,
+      "rationale_zh": "關懷與互助方案可能促進高齡或弱勢群體社會包容，但沒有成果或涵蓋率證據。"
+    },
+    "digital_learning": {
+      "goal": 4,
+      "target": "4.4",
+      "alignment_type": "direct",
+      "confidence_score": 0.45,
+      "rationale_zh": "數位學習方案直接涉及資訊技能，但沒有技能前後測或完成證明。"
+    },
+    "youth_engagement": {
+      "goal": 10,
+      "target": "10.2",
+      "alignment_type": "indirect",
+      "confidence_score": 0.35,
+      "rationale_zh": "跨世代、親子或弱勢參與可能促進社會包容，但尚無參與成果證據。"
+    }
+  },
+  "title_overrides": [
+    {
+      "activity_type": "education",
+      "pattern": "烘焙|職能|技能",
+      "goal": 4,
+      "target": "4.4",
+      "alignment_type": "direct",
+      "confidence_score": 0.4,
+      "rationale_zh": "方案名稱指向實作技能學習，但核定資料沒有技能取得或就業成果。"
+    }
+  ]
+}
