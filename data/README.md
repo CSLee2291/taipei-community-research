@@ -4,6 +4,7 @@ Research data is separated by lifecycle stage. Dataset files are ignored by defa
 
 ## Directories
 
+- `schema/` — versioned table templates, field constraints, and the consolidated profile schema.
 - `external/` — unchanged third-party data acquired from outside the project.
 - `raw/` — immutable first-party collection outputs or source snapshots.
 - `interim/` — temporary normalized, joined, or enriched datasets.
