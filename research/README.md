@@ -1,12 +1,12 @@
-# Research Workspace
+# 研究工作區
 
-This directory contains the materials used to frame and interpret the study before they become formal methodology or publication content.
+本目錄保存研究問題形成與解釋過程中使用的材料，成熟後再移入正式方法或出版內容。
 
-## Suggested contents
+## 建議內容
 
-- `questions/` — research questions, hypotheses, and scope notes.
-- `sources/` — source assessments and bibliographic notes; do not store restricted source copies here.
-- `notes/` — dated research and field notes that are safe to commit.
-- `instruments/` — approved questionnaires, interview guides, or collection templates.
+- `questions/`：研究問題、假設與範圍說明。
+- `sources/`：來源評估與書目筆記；限制來源副本不得放在此處。
+- `notes/`：可安全提交且含日期的研究或田野筆記。
+- `instruments/`：核准的問卷、訪談指引或蒐集模板。
 
-Use ISO dates in filenames where chronology matters, distinguish observations from interpretations, and move durable decisions into `docs/`.
+時間相關檔名使用 ISO 日期，清楚區分觀察與詮釋，長期有效的決策移入 `docs/`。

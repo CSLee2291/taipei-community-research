@@ -1,26 +1,25 @@
-# Documentation
+# 專案文件
 
-## Core documents
+## 核心文件
 
-- `methodology.md` — research scope, evidence hierarchy, data lifecycle, ethics, quality assurance, and limitations.
-- `evaluation-model.md` — eligibility rules, scoring dimensions, weights, confidence, ranking, and AI governance.
-- `data-dictionary.md` — field-by-field definitions for all six application-layer datasets.
-- `research-protocol.md` — repository-wide research workflow and review protocol.
+- `methodology.md`：研究範圍、證據層級、資料生命週期、倫理、品質與限制。
+- `evaluation-model.md`：資格、構面、權重、信心、排名與 AI 治理。
+- `data-dictionary.md`：六組應用資料集的逐欄定義。
+- `research-protocol.md`：Repository 研究流程與審查協定。
+- `sprints/README.md`：Sprint 1–6 的交付成果、驗收條件與目前狀態。
 
-This directory contains durable project documentation: governance, methodology, data definitions, technical decisions, and publication procedures.
+本目錄保存長期有效的專案治理、研究方法、資料定義、技術決策與出版程序。
 
-## Planned documents
+## 待建立文件
 
-- `research-protocol.md` — scope, evidence standards, ethics, and reproducibility requirements.
-- `data-dictionary.md` — field definitions, types, allowed values, and missing-data conventions.
-- `source-register.md` — authoritative sources, access dates, licenses, and coverage notes.
-- `decisions/` — short records for consequential methodological or technical decisions.
-- `release-process.md` — validation, versioning, citation, and publication checklist.
+- `source-register.md`：權威來源、存取日期、授權與涵蓋範圍。
+- `decisions/`：重要研究方法或技術決策紀錄。
+- `release-process.md`：驗證、版本、引用與發布檢查表。
 
-## Documentation conventions
+## 文件規範
 
-- Use Markdown and UTF-8.
-- Include dates in ISO 8601 format (`YYYY-MM-DD`).
-- Distinguish confirmed facts, interpretation, and unresolved questions.
-- Link methodological claims to sources or decision records.
-- Update documentation in the same change as the behavior or schema it describes.
+- 使用 Markdown、UTF-8 與繁體中文。
+- 日期採 ISO 8601（`YYYY-MM-DD`）。
+- 區分已確認事實、研究詮釋與未解問題。
+- 方法主張應連結來源或決策紀錄。
+- 行為或 schema 變更時，在同一變更中更新文件。

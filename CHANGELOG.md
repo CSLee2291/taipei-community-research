@@ -1,24 +1,28 @@
-# Changelog
+# 變更紀錄
 
-All notable changes to this project will be documented in this file.
+本專案所有重要變更都記錄於此。格式參考 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)，開始發布版本化成果後採用[語意化版本](https://semver.org/lang/zh-TW/)。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases should follow [Semantic Versioning](https://semver.org/) when the project begins publishing versioned artifacts.
+## [尚未發布]
 
-## [Unreleased]
+### 新增
 
-### Added
+- Codex 專案總指令 `AGENTS.md`，規範繁體中文、官方來源、禁止捏造、合成資料隔離及里程碑流程。
+- `PROJECT_SPEC.md`，整合研究方法、資料來源、SDG、AI 評分、Dashboard、網站、報告、自動化、命名及 Release 規格。
+- Sprint 1–6 執行手冊與真實進度標記，明確區分官方名冊成果、原型與待研究項目。
+- 八個 GitHub Actions workflows，涵蓋建置、資料驗證、JSON 匯出、Dashboard、報告、GitHub Pages、Release 與手動完整同步。
+- Dependabot 的 GitHub Actions 與 Dashboard npm 每週相依套件檢查。
+- Markdown 連結檢查、資料層 JSON 匯出、GitHub Pages 靜態網站及研究報告產生程式。
+- Repository 層級 `scripts/` 使用說明與本機驗證入口。
+- 長期研究 Repository 結構、授權、專案目標、工作原則與資料處理指引。
+- 社區、活動、SDG、獎項、補助的正規化 CSV schema 與整合 Profile JSON Schema。
+- 版本化臺北市政府開放資料快照、萬華來源登錄與穩定 ID 映射。
+- 萬華區 31 筆處理後 JSON、研究總覽、資料品質報告與個別協會檔案。
+- 萬華互動式研究 Dashboard，包含篩選、座標、時間分布、資料詳情與 JSON 下載。
+- Google Maps 同步選取、多點標記、位置與大眾運輸路線整合。
+- CSV、JSON、JSON Schema、原始資料規範、六工作表檢閱檔、研究方法、評分模型與資料字典。
 
-- Professional long-term research repository structure.
-- Project purpose, objectives, working principles, and data-handling guidance.
-- Phased roadmap covering research design through maintenance.
-- Documentation and research-area conventions.
-- Dedicated work areas for data, dashboard, website, report, and research materials.
-- Repository ignore rules for local tooling, generated outputs, and sensitive data.
-- Normalized CSV schemas for communities, activities, SDG alignments, awards, and funding.
-- JSON Schema 2020-12 definition for consolidated community profiles.
-- Database relationship, identifier, provenance, integrity, and schema-evolution conventions.
-- Versioned Taipei City open-data source snapshot and Wanhua source-selection register.
-- Normalized Wanhua JSON database, overview report, data-quality report, and 31 association profiles.
-- Interactive Wanhua research dashboard with filtering, coordinate view, timeline, record details, and JSON download.
-- Google Maps integration with synchronized association selection, location links, transit directions, and optional multi-marker API mode.
-- Versioned research data layer with CSV, JSON, JSON Schema, raw-data conventions, a six-sheet review workbook, methodology, evaluation model, and comprehensive data dictionary.
+### 變更
+
+- README、ROADMAP、研究協定及各工作區入口文件改為繁體中文。
+- README 與 ROADMAP 依實際 31 筆官方萬華區紀錄及 Sprint 驗收條件更新。
+- 研究資料完整同步、匯出、Dashboard 與報告更新改為使用者手動觸發，不設定每日資料排程。

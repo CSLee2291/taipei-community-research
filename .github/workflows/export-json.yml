@@ -1,0 +1,45 @@
+name: Export Research JSON
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: export-json-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export:
+    name: Export CSV datasets to JSON
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.0
+
+      - name: Export data-layer JSON
+        run: node research/scripts/export-data-layer-json.mjs
+
+      - name: Validate exported datasets
+        run: node research/scripts/validate-data-layer.mjs
+
+      - name: Build website with exported JSON
+        run: node research/scripts/build-static-site.mjs
+
+      - name: Upload exported data
+        uses: actions/upload-artifact@v7
+        with:
+          name: exported-json-${{ github.run_number }}
+          path: |
+            data/json
+            website/dist
+          if-no-files-found: error
+          retention-days: 14

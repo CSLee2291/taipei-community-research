@@ -1,57 +1,74 @@
-# Taipei Community Research
+# 臺北市社區發展協會研究
 
-A long-term, reproducible research project on Taipei Community Development Associations and the communities they serve, with an initial study period of 2023–2026.
+這是一個長期、開源且可重製的臺北市社區發展協會研究平台，第一階段聚焦萬華區，研究期間為 2023–2026。
 
-## Purpose
+本 Repository 同時是研究資料庫、方法文件、互動式 Dashboard、公開網站與研究報告的單一版本來源。所有正式事實必須有可驗證來源；無法確認的資料維持空白並記錄限制，不使用 AI 推測補齊。
 
-This repository provides a shared home for research design, source material, structured data, analysis, public-facing outputs, and project decisions. It is organized so that evidence can be traced from collection through analysis to publication.
+## 目前成果
 
-## Research objectives
+- 從臺北市政府開放資料識別 31 筆萬華區社區發展協會紀錄。
+- 建立 31 份協會 Markdown 基本檔案與資料品質報告。
+- 建立 CSV、JSON、JSON Schema 與六工作表人工檢閱檔。
+- 建立 Google Maps 整合的萬華研究 Dashboard。
+- 建立資料驗證、JSON 匯出、網站、報告、Release 與 GitHub Pages 工作流程。
+- 建立研究方法、資料字典、評分模型與 Sprint 驗收規範。
 
-- Build a documented inventory of Taipei community development associations.
-- Track organizational, geographic, and program changes over time.
-- Preserve source provenance and data-processing decisions.
-- Produce transparent analyses, reports, dashboards, and public web resources.
-- Support repeatable updates beyond the initial 2023–2026 study period.
+活動、獎項、補助、SDG 與 AI 排名資料目前仍含清楚標示的合成教學示例，不代表任何協會的真實成果，也不得用於正式排名。
 
-## Repository structure
+## 專案入口
 
-| Path | Purpose |
+| 文件／路徑 | 用途 |
 | --- | --- |
-| `docs/` | Project governance, methodology, data dictionary, and technical documentation |
-| `data/` | External, raw, interim, and processed research data |
-| `dashboard/` | Interactive analysis and dashboard source code |
-| `website/` | Public project website source code and content |
-| `report/` | Long-form reports, figures, tables, and publication assets |
-| `research/` | Research questions, literature notes, field notes, and source registers |
-| `ROADMAP.md` | Planned phases, deliverables, and decision gates |
-| `CHANGELOG.md` | Notable changes to the project and its outputs |
+| [`AGENTS.md`](AGENTS.md) | Codex 與研究代理必須遵守的永久規則 |
+| [`PROJECT_SPEC.md`](PROJECT_SPEC.md) | 資料、研究、Dashboard、網站、報告與 Release 規格 |
+| [`docs/sprints/README.md`](docs/sprints/README.md) | Sprint 1–6 的交付與驗收條件 |
+| [`docs/methodology.md`](docs/methodology.md) | 研究方法與證據標準 |
+| [`docs/evaluation-model.md`](docs/evaluation-model.md) | 可解釋評分模型與公平性護欄 |
+| [`docs/data-dictionary.md`](docs/data-dictionary.md) | 六組資料集欄位定義 |
+| [`ROADMAP.md`](ROADMAP.md) | 目前進度與下一階段 |
+| [`CHANGELOG.md`](CHANGELOG.md) | 可追蹤的專案變更 |
 
-Each top-level work area contains its own README with scope and conventions.
+## Repository 結構
 
-## Working principles
+| 路徑 | 用途 |
+| --- | --- |
+| `data/` | 外部、原始、schema、CSV、JSON 與處理後研究資料 |
+| `docs/` | 方法、資料字典、評分、Sprint 與治理文件 |
+| `dashboard/` | 互動式研究 Dashboard |
+| `website/` | GitHub Pages 靜態網站 |
+| `report/` | 萬華研究報告與 31 份協會檔案 |
+| `research/` | 來源登錄、ID 映射與研究轉換程式 |
+| `scripts/` | Repository 層級自動化入口說明 |
+| `.github/workflows/` | CI/CD、資料驗證、報告與部署 |
 
-1. **Traceability:** every derived record should be traceable to a source and processing step.
-2. **Reproducibility:** transformations and analyses should be scriptable where practical.
-3. **Data minimization:** collect only information needed for the stated research purpose.
-4. **Respect and privacy:** do not commit personal, sensitive, or restricted information.
-5. **Separation of concerns:** keep source data, transformed data, analysis, and publication outputs distinct.
-6. **Bilingual readiness:** use UTF-8 throughout and retain authoritative Traditional Chinese names alongside translations.
+## 本機驗證
 
-## Getting started
+需要 Node.js 22.13 以上；報告圖表與出版流程使用 Python 3.12。
 
-1. Read [`docs/README.md`](docs/README.md) and [`docs/research-protocol.md`](docs/research-protocol.md).
-2. Review the current priorities in [`ROADMAP.md`](ROADMAP.md).
-3. Add research questions and source notes under `research/`.
-4. Register new datasets before placing files in `data/`.
-5. Record user-visible or methodological changes in [`CHANGELOG.md`](CHANGELOG.md).
+```bash
+node research/scripts/check-markdown-links.mjs
+node research/scripts/validate-data-layer.mjs
+node research/scripts/export-data-layer-json.mjs --check
+node research/scripts/build-wanhua-database.mjs
+node research/scripts/build-static-site.mjs
 
-Tooling and environment setup will be documented once the analysis and publishing stacks are selected.
+cd dashboard
+npm ci
+npm test
+npm run lint
+```
 
-## Data and licensing
+完整資料同步、JSON 匯出、Dashboard artifact、研究報告與 Release 都從 GitHub Actions 的 **Run workflow** 由使用者觸發。研究資料不設定每日自動更新。
 
-The repository's original software and documentation are licensed under the [MIT License](LICENSE). Third-party data and source materials may have separate terms; document those terms and provenance in the relevant data or source register. The MIT license does not override third-party rights.
+## 研究原則
 
-## Status
+1. 每個正式事實皆可回溯至來源與處理步驟。
+2. 來源原值、正規化值與衍生結果分層保存。
+3. 查無資料不等於沒有活動或未營運。
+4. 合成示例不得進入正式分析、圖表或排名。
+5. AI 只能輔助抽取與檢查，正式判斷需人工覆核。
+6. 不提交敏感資料、私人聯絡資訊或任何憑證。
 
-The project is in its foundation phase. Research questions, source criteria, the data schema, and publication tooling are the next decision points.
+## 授權
+
+本 Repository 原創程式與文件採 [MIT License](LICENSE)。第三方資料依其原始授權條款使用；MIT License 不會取代政府開放資料或其他來源的權利與歸屬要求。

@@ -1,52 +1,57 @@
-# Research Protocol
+# 研究協定
 
-Status: Draft
+狀態：草案
 
-Last updated: 2026-08-03
+更新日期：2026-08-03
 
-## Scope
+## 研究範圍
 
-The initial study examines Taipei Community Development Associations and related community context during 2023–2026. The exact unit of analysis, geographic coverage, comparison strategy, and update cadence remain to be approved during the research-design phase.
+初始研究以臺北市萬華區社區發展協會為分析單位，研究期間為 2023–2026。官方名冊實際識別出 31 筆萬華區紀錄。研究擴充至其他行政區前，必須先完成萬華區資料品質、方法與發布審查。
 
-## Evidence standards
+## 證據標準
 
-1. Prefer authoritative, first-party, and stable public sources.
-2. Record source title, publisher, URL or archival identifier, publication date, access date, and applicable terms.
-3. Preserve source values before normalization.
-4. Document transformations, inferred values, and conflict-resolution rules.
-5. Treat absence of evidence as unknown unless a source supports a negative finding.
+1. 優先使用權威、第一方且可穩定存取的公開來源。
+2. 記錄來源標題、發布者、URL 或典藏識別碼、發布日、存取日與適用條款。
+3. 正規化前保留來源原值。
+4. 記錄轉換、衍生值與衝突處理規則。
+5. 除非來源支持否定結論，否則缺乏證據一律視為未知。
+6. 合成資料只用於測試，不得支持研究結論。
 
-## Data lifecycle
+## 資料生命週期
 
-1. **Register:** add the source and its terms before collection.
-2. **Acquire:** place approved source snapshots in `data/external/` or `data/raw/`.
-3. **Validate:** check structure, encoding, completeness, and integrity.
-4. **Transform:** write intermediate outputs to `data/interim/`.
-5. **Publish:** write analysis-ready, disclosure-reviewed outputs to `data/processed/`.
-6. **Archive:** version releases and preserve enough metadata to reproduce them.
+1. **登錄：** 蒐集前記錄來源、研究用途與授權。
+2. **取得：** 將核准來源快照放入 `data/external/` 或 `data/raw/`。
+3. **驗證：** 檢查結構、編碼、完整性與檔案完整性。
+4. **轉換：** 將中間產物與規則保持可追溯。
+5. **發布：** 只將通過驗證與揭露審查的資料寫入 CSV、JSON 與 `data/processed/`。
+6. **保存：** 版本化 Release，保留足以重製成果的來源、schema、程式與 metadata。
 
-## Ethics and privacy
+## 倫理與隱私
 
-- Collect only data necessary to answer approved research questions.
-- Do not commit credentials, private contact details, interview data, or other sensitive information.
-- Separate public organizational facts from information about individuals.
-- Document consent, retention, access, and deletion procedures before collecting non-public data.
-- Review outputs for re-identification and disclosure risk before publication.
+- 只蒐集回答核准研究問題所需的資料。
+- 不提交憑證、私人聯絡資訊、訪談原文或其他敏感資料。
+- 區分公開組織事實與個人資訊。
+- 非公開資料蒐集前，先建立同意、保存期限、存取與刪除程序。
+- 發布前檢查重新識別與不當揭露風險。
 
-## Quality assurance
+## 品質保證
 
-- Use stable identifiers and explicit missing-value conventions.
-- Validate uniqueness, referential integrity, dates, administrative areas, and controlled vocabularies.
-- Record known limitations and source coverage gaps.
-- Require review of material schema, method, and interpretation changes.
-- Ensure published claims can be regenerated from versioned inputs and code.
+- 使用穩定識別碼與明確缺值規則。
+- 驗證唯一性、外鍵、日期、行政區、座標與控制詞彙。
+- 檢查 CSV／JSON／處理後資料一致性。
+- 記錄已知限制、來源涵蓋與衝突。
+- schema、方法與重要詮釋變更需經 Pull Request 審查。
+- 所有公開主張應能由版本化輸入與程式重建。
 
-## Open decisions
+## 人工觸發更新
 
-- Primary and secondary research questions
-- Unit of analysis and association identity rules
-- Authoritative source hierarchy
-- Geographic reference system
-- Data schema and controlled vocabularies
-- Analysis and publication toolchains
-- Update cadence and release policy
+研究資料不採每日自動抓取。由授權使用者在 GitHub Actions 手動執行同步、JSON 匯出、Dashboard、報告或 Release；資料 PR 與 main Push 可自動執行唯讀驗證及網站部署。
+
+## 尚待決策
+
+- 協會公開聯絡資料與個人資料的收錄邊界；
+- 官方 Facebook 的身分確認與保存方式；
+- 活動成果與參與人次的統一定義；
+- 正式 SDG 人工覆核角色；
+- AI 評分外部方法與倫理審查；
+- 完整資料覆核與 Release 頻率。

@@ -1,6 +1,6 @@
-# JSON Data Layer
+# JSON 資料層
 
-Each JSON file is a typed publication of its same-named CSV dataset with envelope metadata:
+每個 JSON 是同名 CSV 資料集的型別化發布版本，包含：
 
 - `dataset`
 - `schema_version`
@@ -8,4 +8,4 @@ Each JSON file is a typed publication of its same-named CSV dataset with envelop
 - `record_count`
 - `records`
 
-JSON records preserve numeric and boolean types that are represented textually in CSV. The CSV and JSON layers must be regenerated and validated together.
+JSON 保留 CSV 以文字表示的數字與布林型別。CSV 與 JSON 必須一起重建並通過一致性驗證。

@@ -1,7 +1,7 @@
-# CSV Data Layer
+# CSV 資料層
 
-These UTF-8 CSV files are the flat, analysis-friendly interchange layer. Each file contains a header row and representative records.
+這些 UTF-8 CSV 是適合人工檢閱與分析的平面交換資料。每個檔案包含標題列與代表性紀錄。
 
-`CommunityProfile.csv` contains three source-backed community profiles. Records in the other five files are explicitly marked `is_example=true` and `data_quality_flag=synthetic_example`; they demonstrate relationships and field types and must not be cited as research findings.
+`CommunityProfile.csv` 目前有三筆具政府來源的社區 Profile。其他五個檔案的紀錄均明確標示 `is_example=true` 與 `data_quality_flag=synthetic_example`，只用於展示關聯與欄位型別，不得引用為研究發現。
 
-Canonical column definitions are in `data/schema/*.schema.json` and `docs/data-dictionary.md`.
+正式欄位定義位於 `data/schema/*.schema.json` 與 `docs/data-dictionary.md`。

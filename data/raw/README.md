@@ -1,10 +1,10 @@
-# Raw Data
+# 第一手原始資料
 
-This directory is reserved for immutable first-party collection outputs and snapshots that are not supplied by an external publisher.
+本目錄保留給非外部發布者提供、且不可變更的第一手蒐集輸出與快照。
 
-- Never edit a raw file in place.
-- Record acquisition date, collector, license, sensitivity, checksum, and source identifier alongside every snapshot.
-- Place unchanged third-party government downloads under `data/external/` instead.
-- Do not commit personal, restricted, or unlicensed data.
+- 不得直接編輯原始檔。
+- 每個快照需記錄取得日期、蒐集者、授權、敏感性、checksum 與來源 ID。
+- 未變更的第三方政府下載資料放在 `data/external/`。
+- 不得提交個人、限制或未授權資料。
 
-No raw first-party observations are included in the current sample data layer.
+目前資料層未包含第一手原始觀察資料。
