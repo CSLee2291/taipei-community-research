@@ -31,6 +31,8 @@ node_modules/
 .svelte-kit/
 dist/
 build/
+!dashboard/build/
+!dashboard/build/sites-vite-plugin.ts
 coverage/
 *.tsbuildinfo
 

@@ -26,3 +26,4 @@
 - README、ROADMAP、研究協定及各工作區入口文件改為繁體中文。
 - README 與 ROADMAP 依實際 31 筆官方萬華區紀錄及 Sprint 驗收條件更新。
 - 研究資料完整同步、匯出、Dashboard 與報告更新改為使用者手動觸發，不設定每日資料排程。
+- 修正 Dashboard Sites Vite plugin 被 `.gitignore` 排除、導致乾淨 GitHub Actions runner 無法建置的問題。
