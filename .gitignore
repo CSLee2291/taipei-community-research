@@ -55,6 +55,10 @@ data/raw/*
 data/interim/*
 data/processed/*
 !data/external/.gitkeep
+!data/external/taipei-city/
+!data/external/taipei-city/2026-03-31/
+!data/external/taipei-city/2026-03-31/community-development-associations.csv
+!data/external/taipei-city/2026-03-31/README.md
 !data/raw/.gitkeep
 !data/interim/.gitkeep
 !data/processed/.gitkeep
