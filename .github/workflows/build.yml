@@ -51,7 +51,14 @@ jobs:
 
       - name: Check generated research files
         run: |
-          git diff --exit-code -- +            data/processed/wanhua-community-associations.json +            dashboard/app/data/wanhua-community-associations.json +            dashboard/public/data/wanhua-community-associations.json +            report/wanhua
+          git diff --exit-code -- \
+            data/csv/CommunityProfile.csv \
+            data/json/CommunityProfile.json \
+            data/processed/wanhua-community-associations.json \
+            dashboard/app/data/wanhua-community-associations.json \
+            dashboard/public/data/wanhua-community-associations.json \
+            docs/community-list.md \
+            report/wanhua
 
       - name: Check Python syntax
         run: python -m compileall -q research/scripts

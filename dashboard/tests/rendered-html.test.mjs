@@ -15,9 +15,10 @@ test("server-renders the Wanhua research dashboard", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<title>萬華社區研究｜臺北市政府開放資料<\/title>/i);
-  assert.match(html, /31/);
+  assert.match(html, /33/);
   assert.match(html, /協會資料目錄/);
   assert.match(html, /臺北市政府開放資料/);
+  assert.match(html, /whdo\.gov\.taipei/);
   assert.match(html, /63000070/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
@@ -31,9 +32,9 @@ test("ships validated research data and removes the starter preview", async () =
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
   const database = JSON.parse(dataText);
-  assert.equal(database.coverage.record_count, 31);
-  assert.equal(database.communities.length, 31);
-  assert.equal(new Set(database.communities.map((community) => community.community_id)).size, 31);
+  assert.equal(database.coverage.record_count, 33);
+  assert.equal(database.communities.length, 33);
+  assert.equal(new Set(database.communities.map((community) => community.community_id)).size, 33);
   assert.match(page, /WanhuaDashboard/);
   assert.match(component, /aria-live="polite"/);
   assert.match(component, /data\/wanhua-community-associations\.json/);

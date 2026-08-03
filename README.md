@@ -6,8 +6,8 @@
 
 ## 目前成果
 
-- 從臺北市政府開放資料識別 31 筆萬華區社區發展協會紀錄。
-- 建立 31 份協會 Markdown 基本檔案與資料品質報告。
+- 以萬華區公所 2026-02-12 官方名冊確認 33 筆萬華區社區發展協會，並以社會局全市資料交叉比對其中 31 筆。
+- 完成 Sprint 1 主檔：33 筆 `CommunityProfile` CSV／JSON、協會清冊、個別 Markdown 檔案與資料品質報告。
 - 建立 CSV、JSON、JSON Schema 與六工作表人工檢閱檔。
 - 建立 Google Maps 整合的萬華研究 Dashboard。
 - 建立資料驗證、JSON 匯出、網站、報告、Release 與 GitHub Pages 工作流程。
@@ -36,7 +36,7 @@
 | `docs/` | 方法、資料字典、評分、Sprint 與治理文件 |
 | `dashboard/` | 互動式研究 Dashboard |
 | `website/` | GitHub Pages 靜態網站 |
-| `report/` | 萬華研究報告與 31 份協會檔案 |
+| `report/` | 萬華研究報告與 33 份協會檔案 |
 | `research/` | 來源登錄、ID 映射與研究轉換程式 |
 | `scripts/` | Repository 層級自動化入口說明 |
 | `.github/workflows/` | CI/CD、資料驗證、報告與部署 |

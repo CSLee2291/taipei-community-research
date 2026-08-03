@@ -1,33 +1,42 @@
 {
-  "database_version": "1.0.0",
+  "database_version": "1.1.0",
   "generated_on": "2026-08-03",
   "title": "Taipei Wanhua Community Development Associations",
-  "title_zh": "臺北市萬華區社區發展協會資料庫",
+  "title_zh": "臺北市萬華區社區發展協會主資料庫",
   "coverage": {
-    "rule": "administrative district code equals 63000070",
+    "rule": "included in the Wanhua District Office roster published on 2026-02-12",
     "district_code": "63000070",
     "district_name_zh": "萬華區",
     "source_record_count": 371,
-    "record_count": 31
+    "citywide_wanhua_record_count": 31,
+    "district_roster_record_count": 33,
+    "record_count": 33
   },
   "attribution": {
-    "provider": "臺北市政府社會局",
-    "dataset_title": "臺北市社區發展服務_社區發展協會",
-    "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+    "primary_provider": "臺北市萬華區公所",
+    "primary_dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+    "primary_dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+    "secondary_provider": "臺北市政府社會局",
+    "secondary_dataset_title": "臺北市社區發展服務_社區發展協會",
+    "secondary_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
     "license": "政府資料開放授權條款-第1版",
     "license_url": "https://data.taipei/rule",
-    "attribution_statement": "臺北市政府社會局 2026，臺北市社區發展服務_社區發展協會。"
+    "attribution_statement": "臺北市萬華區公所 2026，臺北市萬華區社區發展協會組織區域一覽表；臺北市政府社會局 2026，臺北市社區發展服務_社區發展協會。"
   },
   "privacy": {
     "public_contact_fields_redistributed": false,
-    "note": "Chairperson names, telephone numbers, fax numbers, and email addresses from the source are excluded from this derivative under the project data-minimization policy."
+    "note": "官方來源中的理事長姓名、電話、傳真與電子郵件不轉載至公開衍生資料。"
   },
   "quality_summary": {
-    "complete_core_records": 23,
-    "coordinate_records": 23,
+    "complete_core_records": 15,
+    "coordinate_records": 15,
     "establishment_date_records": 28,
     "registration_number_records": 27,
-    "unique_address_villages": 23,
+    "unique_address_villages": 25,
+    "citywide_crosschecked_records": 31,
+    "district_only_records": 2,
+    "address_changes_or_district_only_records": 10,
+    "coordinates_withheld_for_address_change": 8,
     "earliest_known_establishment_year": 1992,
     "latest_known_establishment_year": 2025,
     "establishment_decade_counts": {
@@ -40,6 +49,7 @@
   "communities": [
     {
       "community_id": "COM-0001",
+      "district_roster_number": 1,
       "community_name_zh": "華江",
       "association_name_zh": "臺北市萬華區華江社區發展協會",
       "district_code": "63000070",
@@ -57,15 +67,26 @@
         "upload_date": "2016-03-25",
         "upload_date_roc": "1050325",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 1,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區華江里長順街14巷1弄2號1樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -74,15 +95,16 @@
     },
     {
       "community_id": "COM-0002",
+      "district_roster_number": 2,
       "community_name_zh": "富福",
       "association_name_zh": "臺北市萬華區富福社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "富福里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區富福里西園路一段179號2樓",
-      "latitude": 25.0345473,
-      "longitude": 121.499469,
+      "address_zh": "臺北市萬華區富福里和平西路三段30巷11號",
+      "latitude": null,
+      "longitude": null,
       "established_date": "1999-10-02",
       "registration_number": "北市社七字第8827266700號",
       "term_number": 6,
@@ -91,23 +113,37 @@
         "upload_date": "2017-01-19",
         "upload_date_roc": "1060119",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 2,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區富福里西園路一段179號2樓",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0003",
+      "district_roster_number": 3,
       "community_name_zh": "雙園",
       "association_name_zh": "臺北市萬華區雙園社區發展協會",
       "district_code": "63000070",
@@ -125,15 +161,26 @@
         "upload_date": "2014-09-03",
         "upload_date_roc": "1030903",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 3,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區雙園里莒光路293號1樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -142,6 +189,7 @@
     },
     {
       "community_id": "COM-0004",
+      "district_roster_number": 4,
       "community_name_zh": "堀江町",
       "association_name_zh": "臺北市萬華區堀江町社區發展協會",
       "district_code": "63000070",
@@ -159,15 +207,26 @@
         "upload_date": "2014-05-02",
         "upload_date_roc": "1030502",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 4,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區雙園里萬大路110號4樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -176,15 +235,16 @@
     },
     {
       "community_id": "COM-0005",
+      "district_roster_number": 22,
       "community_name_zh": "中正新城",
       "association_name_zh": "臺北市萬華區中正新城社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "忠貞里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區忠貞里青年路66號4樓之3",
-      "latitude": 25.0242429,
-      "longitude": 121.5027126,
+      "address_zh": "臺北市萬華區忠貞里青年路66號地下室",
+      "latitude": null,
+      "longitude": null,
       "established_date": "2013-06-29",
       "registration_number": "北市社七字第1023號",
       "term_number": 4,
@@ -193,23 +253,37 @@
         "upload_date": "2018-08-28",
         "upload_date_roc": "1070828",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 22,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區忠貞里青年路66號4樓之3",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0006",
+      "district_roster_number": 21,
       "community_name_zh": "忠貞",
       "association_name_zh": "臺北市萬華區忠貞社區發展協會",
       "district_code": "63000070",
@@ -227,15 +301,26 @@
         "upload_date": "2019-11-07",
         "upload_date_roc": "1081107",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 21,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區忠貞里青年路106巷26號4樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -244,6 +329,7 @@
     },
     {
       "community_id": "COM-0007",
+      "district_roster_number": 23,
       "community_name_zh": "新忠",
       "association_name_zh": "臺北市萬華區新忠社區發展協會",
       "district_code": "63000070",
@@ -261,15 +347,26 @@
         "upload_date": "2019-08-27",
         "upload_date_roc": "1080827",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 23,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新忠里西藏路125巷15號3樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -278,15 +375,16 @@
     },
     {
       "community_id": "COM-0008",
+      "district_roster_number": 5,
       "community_name_zh": "忠恕",
       "association_name_zh": "臺北市萬華區忠恕社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "新忠里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區新忠里中華路二段364巷22弄3號",
-      "latitude": 25.028744,
-      "longitude": 121.50442,
+      "address_zh": "臺北市萬華區新忠里中華路二段364巷24弄40號",
+      "latitude": null,
+      "longitude": null,
       "established_date": "1992-08-22",
       "registration_number": "北市社七字第39710號",
       "term_number": 10,
@@ -295,23 +393,37 @@
         "upload_date": "2014-06-04",
         "upload_date_roc": "1030604",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 5,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新忠里中華路二段364巷22弄3號",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0009",
+      "district_roster_number": 32,
       "community_name_zh": "全德家園",
       "association_name_zh": "臺北市萬華區全德家園社區發展協會",
       "district_code": "63000070",
@@ -329,15 +441,26 @@
         "upload_date": "2025-02-11",
         "upload_date_roc": "1140211",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 32,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區全德里德昌街19號1樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -348,15 +471,16 @@
     },
     {
       "community_id": "COM-0010",
+      "district_roster_number": 6,
       "community_name_zh": "保德",
       "association_name_zh": "臺北市萬華區保德社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "保德里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區保德里東園街154巷9弄2號1樓",
-      "latitude": 25.022825,
-      "longitude": 121.4970747,
+      "address_zh": "臺北市萬華區保德里東園街154巷9弄2號",
+      "latitude": null,
+      "longitude": null,
       "established_date": "1994-01-18",
       "registration_number": "北市社七字第13029號",
       "term_number": 8,
@@ -365,23 +489,37 @@
         "upload_date": "2015-04-17",
         "upload_date_roc": "1040417",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 6,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區保德里東園街154巷9弄2號1樓",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0011",
+      "district_roster_number": 30,
       "community_name_zh": "壽德",
       "association_name_zh": "臺北市萬華區壽德社區發展協會",
       "district_code": "63000070",
@@ -399,15 +537,26 @@
         "upload_date": "2023-08-18",
         "upload_date_roc": "1120818",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 30,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區壽德里長泰街45號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -418,6 +567,7 @@
     },
     {
       "community_id": "COM-0012",
+      "district_roster_number": 7,
       "community_name_zh": "萬大",
       "association_name_zh": "臺北市萬華區萬大社區發展協會",
       "district_code": "63000070",
@@ -429,21 +579,32 @@
       "longitude": 121.4998804,
       "established_date": "2002-06-26",
       "registration_number": "北市社七字第09135992200號",
-      "term_number": 6,
+      "term_number": 5,
       "organization_status": "unknown",
       "source_record": {
         "upload_date": "2015-03-11",
         "upload_date_roc": "1040311",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 7,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區壽德里萬大路387巷39號3樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -452,13 +613,14 @@
     },
     {
       "community_id": "COM-0013",
+      "district_roster_number": 19,
       "community_name_zh": "好厝邊",
       "association_name_zh": "臺北市萬華區好厝邊社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "仁德里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區仁德里西寧南路192-3號",
+      "address_zh": "臺北市萬華區仁德里西寧南路192之3號",
       "latitude": 25.0390554,
       "longitude": 121.5061617,
       "established_date": "2011-05-24",
@@ -469,15 +631,26 @@
         "upload_date": "2019-01-28",
         "upload_date_roc": "1080128",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 19,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區仁德里西寧南路192-3號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -486,6 +659,7 @@
     },
     {
       "community_id": "COM-0014",
+      "district_roster_number": 28,
       "community_name_zh": "糖廍",
       "association_name_zh": "臺北市萬華區糖廍社區發展協會",
       "district_code": "63000070",
@@ -503,15 +677,26 @@
         "upload_date": "2023-08-18",
         "upload_date_roc": "1120818",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 28,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區糖廍里大理街159巷3號3樓之2",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -524,6 +709,7 @@
     },
     {
       "community_id": "COM-0015",
+      "district_roster_number": 8,
       "community_name_zh": "福音",
       "association_name_zh": "臺北市萬華區福音社區發展協會",
       "district_code": "63000070",
@@ -541,15 +727,26 @@
         "upload_date": "2015-09-04",
         "upload_date_roc": "1040904",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 8,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區福音里貴陽街二段82巷20弄2號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -558,6 +755,7 @@
     },
     {
       "community_id": "COM-0016",
+      "district_roster_number": 9,
       "community_name_zh": "艋舺",
       "association_name_zh": "臺北市萬華區艋舺社區發展協會",
       "district_code": "63000070",
@@ -575,15 +773,26 @@
         "upload_date": "2014-02-07",
         "upload_date_roc": "1030207",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 9,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區富民里康定路160號10樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -592,15 +801,16 @@
     },
     {
       "community_id": "COM-0017",
+      "district_roster_number": 10,
       "community_name_zh": "綠堤",
       "association_name_zh": "臺北市萬華區綠堤社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "綠堤里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區綠堤里環河南路二段175巷3號1樓",
-      "latitude": 25.0398063,
-      "longitude": 121.4979557,
+      "address_zh": "臺北市萬華區綠堤里雙園街122巷14號3樓",
+      "latitude": null,
+      "longitude": null,
       "established_date": "1994-03-11",
       "registration_number": "北市社七字第66657號",
       "term_number": 8,
@@ -609,32 +819,46 @@
         "upload_date": "2016-12-04",
         "upload_date_roc": "1051204",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 10,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區綠堤里環河南路二段175巷3號1樓",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0018",
+      "district_roster_number": 11,
       "community_name_zh": "日祥",
       "association_name_zh": "臺北市萬華區日祥社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "日祥里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區日祥里青年路178巷28號3樓",
-      "latitude": 25.020119,
-      "longitude": 121.502213,
+      "address_zh": "臺北市萬華區日祥里青年路178巷60號3樓",
+      "latitude": null,
+      "longitude": null,
       "established_date": "1994-05-06",
       "registration_number": "北市社七字第31237號",
       "term_number": 8,
@@ -643,23 +867,37 @@
         "upload_date": "2014-08-08",
         "upload_date_roc": "1030808",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 11,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區日祥里青年路178巷28號3樓",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0019",
+      "district_roster_number": 31,
       "community_name_zh": "南一",
       "association_name_zh": "臺北市萬華區南一社區發展協會",
       "district_code": "63000070",
@@ -677,15 +915,26 @@
         "upload_date": "2023-05-19",
         "upload_date_roc": "1120519",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 31,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區日祥里青年路152巷37號4樓之1",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -697,6 +946,7 @@
     },
     {
       "community_id": "COM-0020",
+      "district_roster_number": 20,
       "community_name_zh": "展新",
       "association_name_zh": "臺北市萬華區展新社區發展協會",
       "district_code": "63000070",
@@ -714,15 +964,26 @@
         "upload_date": "2017-05-05",
         "upload_date_roc": "1060505",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 20,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新安里萬大路187巷1弄13號1樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -731,6 +992,7 @@
     },
     {
       "community_id": "COM-0021",
+      "district_roster_number": 16,
       "community_name_zh": "新國光",
       "association_name_zh": "臺北市萬華區新國光社區發展協會",
       "district_code": "63000070",
@@ -748,15 +1010,26 @@
         "upload_date": "2018-02-02",
         "upload_date_roc": "1070202",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 16,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區凌霄里國興路36號7樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -765,13 +1038,14 @@
     },
     {
       "community_id": "COM-0022",
+      "district_roster_number": 24,
       "community_name_zh": "新和七普拉斯",
       "association_name_zh": "臺北市萬華區新和七普拉斯社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "新和里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區新和里中華路二段416巷11-3號",
+      "address_zh": "臺北市萬華區新和里中華路2段416巷11-3號",
       "latitude": null,
       "longitude": null,
       "established_date": "2020-03-16",
@@ -782,15 +1056,26 @@
         "upload_date": "2020-05-11",
         "upload_date_roc": "1090511",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 24,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新和里中華路二段416巷11-3號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -801,13 +1086,14 @@
     },
     {
       "community_id": "COM-0023",
+      "district_roster_number": 17,
       "community_name_zh": "青年",
       "association_name_zh": "臺北市萬華區青年社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "新和里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區新和里中華路二段416巷11-2號",
+      "address_zh": "臺北市萬華區新和里中華路2段416巷11-2號",
       "latitude": 25.0260369,
       "longitude": 121.505953,
       "established_date": "2010-09-20",
@@ -818,15 +1104,26 @@
         "upload_date": "2019-01-19",
         "upload_date_roc": "1080119",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 17,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新和里中華路二段416巷11-2號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -835,6 +1132,7 @@
     },
     {
       "community_id": "COM-0024",
+      "district_roster_number": 14,
       "community_name_zh": "馬場町",
       "association_name_zh": "臺北市萬華區馬場町社區發展協會",
       "district_code": "63000070",
@@ -852,15 +1150,26 @@
         "upload_date": "2018-08-28",
         "upload_date_roc": "1070828",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 14,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區騰雲里水源路195號4樓之4",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -869,6 +1178,7 @@
     },
     {
       "community_id": "COM-0025",
+      "district_roster_number": 15,
       "community_name_zh": "國興水漾",
       "association_name_zh": "臺北市萬華區國興水漾社區發展協會",
       "district_code": "63000070",
@@ -886,15 +1196,26 @@
         "upload_date": "2017-09-11",
         "upload_date_roc": "1060911",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 15,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區騰雲里水源路195號7樓之4",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
@@ -903,6 +1224,7 @@
     },
     {
       "community_id": "COM-0026",
+      "district_roster_number": 25,
       "community_name_zh": "忠德友善",
       "association_name_zh": "臺北市萬華區忠德友善社區發展協會",
       "district_code": "63000070",
@@ -920,15 +1242,26 @@
         "upload_date": "2023-08-18",
         "upload_date_roc": "1120818",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 25,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區忠德里東園街66巷24弄8號",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -941,15 +1274,16 @@
     },
     {
       "community_id": "COM-0027",
+      "district_roster_number": 13,
       "community_name_zh": "忠德",
       "association_name_zh": "臺北市萬華區忠德社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "忠德里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區忠德里西園路二段177號",
-      "latitude": 25.0278179,
-      "longitude": 121.4951254,
+      "address_zh": "臺北市萬華區忠德里東園街4號2樓",
+      "latitude": null,
+      "longitude": null,
       "established_date": "2002-09-16",
       "registration_number": "北市社七字第09138268600號",
       "term_number": 5,
@@ -958,30 +1292,44 @@
         "upload_date": "2017-02-06",
         "upload_date_roc": "1060206",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 13,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區忠德里西園路二段177號",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0028",
+      "district_roster_number": 33,
       "community_name_zh": "我愛加蚋錦德",
       "association_name_zh": "臺北市萬華區我愛加蚋錦德社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "錦德里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區錦德里西園路二段281巷30-3號9樓之1",
+      "address_zh": "臺北市萬華區錦德里西園路2段281巷30-3號9樓之1",
       "latitude": null,
       "longitude": null,
       "established_date": "2025-04-14",
@@ -992,15 +1340,26 @@
         "upload_date": "2026-02-11",
         "upload_date_roc": "1150211",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 33,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區錦德里西園路二段281巷30-3號9樓之1",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -1011,15 +1370,16 @@
     },
     {
       "community_id": "COM-0029",
+      "district_roster_number": 12,
       "community_name_zh": "和平",
       "association_name_zh": "臺北市萬華區和平社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "和平里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區和平里艋舺大道426號2樓",
-      "latitude": 25.0326612,
-      "longitude": 121.4980217,
+      "address_zh": "臺北市萬華區和平里西園路2段198號之一1樓",
+      "latitude": null,
+      "longitude": null,
       "established_date": "2003-07-25",
       "registration_number": "北市社七字第09239911500號",
       "term_number": 9,
@@ -1028,23 +1388,37 @@
         "upload_date": "2013-10-11",
         "upload_date_roc": "1021011",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 12,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區和平里艋舺大道426號2樓",
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": true
       },
       "record_status": "verified",
-      "data_quality_flag": "none",
-      "missing_fields": [],
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     },
     {
       "community_id": "COM-0030",
+      "district_roster_number": 26,
       "community_name_zh": "菜園",
       "association_name_zh": "臺北市萬華區菜園社區發展協會",
       "district_code": "63000070",
@@ -1062,15 +1436,26 @@
         "upload_date": "2023-08-18",
         "upload_date_roc": "1120818",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 26,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區菜園里內江街150號2樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "incomplete",
@@ -1083,36 +1468,148 @@
     },
     {
       "community_id": "COM-0031",
+      "district_roster_number": 18,
       "community_name_zh": "新起",
       "association_name_zh": "臺北市萬華區新起社區發展協會",
       "district_code": "63000070",
       "district_name_zh": "萬華區",
       "village_name_zh": "新起里",
       "postal_code": "108",
-      "address_zh": "臺北市萬華區新起里貴陽街二段19號6樓",
+      "address_zh": "臺北市萬華區新起里貴陽街2段19號6樓",
       "latitude": 25.039562,
       "longitude": 121.5059061,
       "established_date": "2011-04-09",
       "registration_number": "北市社七字第10036432900號",
-      "term_number": 4,
+      "term_number": 3,
       "organization_status": "unknown",
       "source_record": {
         "upload_date": "2019-06-11",
         "upload_date_roc": "1080611",
         "agency_code": "379120000J",
-        "providing_unit": "人民團體科"
+        "providing_unit": "人民團體科",
+        "district_roster_number": 18,
+        "district_roster_published_on": "2026-02-12"
       },
       "provenance": {
-        "dataset_title": "臺北市社區發展服務_社區發展協會",
-        "dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
-        "resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
-        "source_resource_updated_at": "2026-03-31T15:13:03+08:00",
-        "accessed_on": "2026-08-03"
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": "臺北市社區發展服務_社區發展協會",
+        "city_dataset_url": "https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_dataset_id": "e81a07f7-8137-4019-a96f-210a00ef72a3",
+        "city_resource_id": "654f0abf-b859-4a1d-8dcd-28c733313c1c",
+        "city_source_resource_updated_at": "2026-03-31T15:13:03+08:00"
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": true,
+        "citywide_address_zh": "臺北市萬華區新起里貴陽街二段19號6樓",
+        "address_matches_city_source": true,
+        "coordinates_withheld_for_address_change": false
       },
       "record_status": "verified",
       "data_quality_flag": "none",
       "missing_fields": [],
+      "schema_version": "1.0.0"
+    },
+    {
+      "community_id": "COM-0032",
+      "district_roster_number": 27,
+      "community_name_zh": "愛在孝德",
+      "association_name_zh": "臺北市萬華區愛在孝德社區發展協會",
+      "district_code": "63000070",
+      "district_name_zh": "萬華區",
+      "village_name_zh": "孝德里",
+      "postal_code": null,
+      "address_zh": "臺北市萬華區孝德里德昌街261巷18號1樓",
+      "latitude": null,
+      "longitude": null,
+      "established_date": null,
+      "registration_number": null,
+      "term_number": 3,
+      "organization_status": "unknown",
+      "source_record": {
+        "upload_date": "2026-02-12",
+        "upload_date_roc": null,
+        "agency_code": null,
+        "providing_unit": "臺北市萬華區公所",
+        "district_roster_number": 27,
+        "district_roster_published_on": "2026-02-12"
+      },
+      "provenance": {
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": null,
+        "city_dataset_url": null,
+        "city_dataset_id": null,
+        "city_resource_id": null,
+        "city_source_resource_updated_at": null
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": false,
+        "citywide_address_zh": null,
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": false
+      },
+      "record_status": "verified",
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "established_date",
+        "registration_number",
+        "coordinates"
+      ],
+      "schema_version": "1.0.0"
+    },
+    {
+      "community_id": "COM-0033",
+      "district_roster_number": 29,
+      "community_name_zh": "西門",
+      "association_name_zh": "臺北市萬華區西門社區發展協會",
+      "district_code": "63000070",
+      "district_name_zh": "萬華區",
+      "village_name_zh": "西門里",
+      "postal_code": null,
+      "address_zh": "臺北市萬華區西門里成都路60之1號",
+      "latitude": null,
+      "longitude": null,
+      "established_date": null,
+      "registration_number": null,
+      "term_number": 1,
+      "organization_status": "unknown",
+      "source_record": {
+        "upload_date": "2026-02-12",
+        "upload_date_roc": null,
+        "agency_code": null,
+        "providing_unit": "臺北市萬華區公所",
+        "district_roster_number": 29,
+        "district_roster_published_on": "2026-02-12"
+      },
+      "provenance": {
+        "dataset_title": "臺北市萬華區社區發展協會組織區域一覽表",
+        "dataset_url": "https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249",
+        "source_resource_updated_at": "2026-02-12T09:00:47+08:00",
+        "accessed_on": "2026-08-03",
+        "city_dataset_title": null,
+        "city_dataset_url": null,
+        "city_dataset_id": null,
+        "city_resource_id": null,
+        "city_source_resource_updated_at": null
+      },
+      "source_comparison": {
+        "present_in_citywide_dataset": false,
+        "citywide_address_zh": null,
+        "address_matches_city_source": false,
+        "coordinates_withheld_for_address_change": false
+      },
+      "record_status": "verified",
+      "data_quality_flag": "incomplete",
+      "missing_fields": [
+        "established_date",
+        "registration_number",
+        "coordinates"
+      ],
       "schema_version": "1.0.0"
     }
   ]
