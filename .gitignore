@@ -1,0 +1,70 @@
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# JavaScript and web tooling
+node_modules/
+.next/
+.nuxt/
+.svelte-kit/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Generated research outputs
+artifacts/
+tmp/
+temp/
+*.log
+
+# Data policy: keep directory documentation, ignore working datasets by default
+data/external/*
+data/raw/*
+data/interim/*
+data/processed/*
+!data/external/.gitkeep
+!data/external/taipei-city/
+!data/external/taipei-city/2026-03-31/
+!data/external/taipei-city/2026-03-31/community-development-associations.csv
+!data/external/taipei-city/2026-03-31/README.md
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/processed/wanhua-community-associations.json
+
+# Generated publication output
+dashboard/output/
+website/public/generated/
+report/output/
