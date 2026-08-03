@@ -1,0 +1,64 @@
+name: Validate Research Data
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/**"
+      - "research/scripts/validate-data-layer.mjs"
+      - "research/scripts/build-wanhua-database.mjs"
+      - ".github/workflows/validate-data.yml"
+  pull_request:
+    paths:
+      - "data/**"
+      - "research/scripts/validate-data-layer.mjs"
+      - "research/scripts/build-wanhua-database.mjs"
+      - ".github/workflows/validate-data.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-data-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Check CSV, JSON, duplicates, and SDGs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.0
+
+      - name: Create validation artifact directory
+        run: mkdir -p artifacts
+
+      - name: Validate application data layer
+        run: node research/scripts/validate-data-layer.mjs | tee artifacts/data-layer-validation.json
+
+      - name: Verify exported JSON
+        run: node research/scripts/export-data-layer-json.mjs --check
+
+      - name: Validate Wanhua research database
+        run: node research/scripts/build-wanhua-database.mjs | tee artifacts/wanhua-build-summary.json
+
+      - name: Check generated research files
+        run: |
+          git diff --exit-code -- +            data/processed/wanhua-community-associations.json +            dashboard/app/data/wanhua-community-associations.json +            dashboard/public/data/wanhua-community-associations.json +            report/wanhua
+
+      - name: Upload validation summaries
+        uses: actions/upload-artifact@v7
+        with:
+          name: data-validation-${{ github.run_number }}
+          path: artifacts
+          if-no-files-found: error
+          retention-days: 14

@@ -1,26 +1,27 @@
-# Data
+# 研究資料
 
-Research data is separated by lifecycle stage. Dataset files are ignored by default until their provenance, sensitivity, licensing, and publication status have been reviewed.
+研究資料依生命週期分層。資料集在來源、敏感性、授權與發布狀態完成審查前，不應直接提交或公開。
 
-## Directories
+## 目錄
 
-- `schema/` — versioned table templates, field constraints, and the consolidated profile schema.
-- `external/` — unchanged third-party data acquired from outside the project.
-- `raw/` — immutable first-party collection outputs or source snapshots.
-- `interim/` — temporary normalized, joined, or enriched datasets.
-- `processed/` — validated, analysis-ready or approved publication datasets.
+- `schema/`：版本化表格模板、欄位限制與整合 Profile schema。
+- `external/`：從專案外取得且保持原樣的第三方資料。
+- `raw/`：不可變更的第一手蒐集輸出或來源快照。
+- `interim/`：暫時性正規化、關聯或補充資料。
+- `processed/`：通過驗證、可分析或核准發布的資料。
+- `csv/`：含代表性紀錄的 UTF-8 平面表格交換層。
+- `json/`：與 CSV 層同步的型別化 JSON 發布層。
 
-## Dataset requirements
+六組應用資料集是 `CommunityProfile`、`CommunityActivities`、`CommunityAwards`、`CommunitySDGs`、`CommunityFunding` 與 `CommunityAIRanking`。機器可讀契約位於 `schema/*.schema.json`，人工可讀定義位於 `docs/data-dictionary.md`。
 
-Every dataset should have accompanying metadata that records:
+`is_example=true` 或 `data_quality_flag=synthetic_example` 的紀錄只用於展示資料模型，必須排除於研究結論、Dashboard 正式統計與公開排名。
 
-- title and stable dataset identifier;
-- source, publisher, and access date;
-- license or use restrictions;
-- collection method and temporal coverage;
-- schema version and character encoding;
-- transformation lineage;
-- sensitivity classification and publication decision;
-- known limitations.
+```bash
+node research/scripts/validate-data-layer.mjs
+```
 
-Do not commit secrets, personal data, restricted data, or large binary datasets without an approved storage and access plan.
+## 資料集要求
+
+每組資料應附 metadata，記錄標題、穩定 ID、來源、發布者、存取日、授權、蒐集方法、時間範圍、schema 版本、編碼、轉換 lineage、敏感性、發布決策與已知限制。
+
+未建立核准的保存與存取計畫前，不得提交秘密、個人資料、限制資料或大型二進位資料集。

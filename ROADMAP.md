@@ -1,66 +1,82 @@
-# Roadmap
+# 研究路線圖
 
-This roadmap defines the initial direction for the Taipei Community Research project. Dates and deliverables should be revised as evidence, collaborators, and publication requirements become clearer.
+本路線圖以可驗證資料與 Sprint 驗收條件為準。勾選只代表已具備可重製成果，不以介面原型或合成示例冒充研究完成。
 
-## Phase 0 — Foundation
+## Phase 0 — 專案基礎
 
-- [x] Establish the repository structure and working conventions.
-- [x] Add project-level documentation, licensing, and change tracking.
-- [ ] Define project roles, review responsibilities, and decision records.
-- [ ] Select the primary analysis, dashboard, and website toolchains.
-- [ ] Add contribution, citation, and release procedures.
+- [x] 建立 Repository 結構、授權、README、CHANGELOG 與路線圖。
+- [x] 建立 `AGENTS.md` 永久研究規範。
+- [x] 建立 `PROJECT_SPEC.md` 與 Sprint 1–6 驗收標準。
+- [x] 建立方法、資料字典、評分模型與研究協定。
+- [x] 建立資料驗證、建置、報告、Release 與 GitHub Pages workflows。
+- [ ] 建立貢獻指南、引用資訊與研究決策紀錄模板。
 
-**Exit criterion:** contributors can locate materials, understand handling rules, and propose changes consistently.
+**完成條件：** 貢獻者可找到規則、重製成果並透過 Pull Request 審查變更。
 
-## Phase 1 — Research design
+## Sprint 1 — 萬華區社區基本資料
 
-- [ ] Define primary and secondary research questions.
-- [ ] Establish geographic, organizational, and temporal scope.
-- [ ] Create source inclusion and exclusion criteria.
-- [ ] Define ethical review, privacy, and retention requirements.
-- [ ] Draft the data model and controlled vocabularies.
-- [ ] Pilot the protocol against a small, representative sample.
+- [x] 保存臺北市政府社區發展協會官方開放資料快照。
+- [x] 從官方名冊識別 31 筆萬華區紀錄。
+- [x] 建立穩定 `COM-####` ID、處理後 JSON 與 31 份 Markdown 檔案。
+- [x] 建立來源登錄、資料品質摘要與 Google Maps 座標檢視。
+- [ ] 將 31 筆正式 Profile 完整同步至 `CommunityProfile.csv` 與 JSON 發布層。
+- [ ] 依官方來源補充可取得的組織聯絡、關懷據點、會員、志工與評鑑欄位。
+- [ ] 建立 `docs/community-list.md` 與完整缺值 TODO。
 
-**Exit criterion:** the research protocol and schema are approved and the pilot is reproducible.
+**完成條件：** 31 筆 Profile 通過 schema、CSV／JSON 一致性、來源及人工抽查。
 
-## Phase 2 — Collection and normalization
+## Sprint 2 — 2023–2026 活動研究
 
-- [ ] Create a source register with stable identifiers and access dates.
-- [ ] Collect authoritative public records and approved supplementary sources.
-- [ ] Preserve immutable raw inputs and checksums where appropriate.
-- [ ] Normalize names, administrative areas, dates, and organization identifiers.
-- [ ] Document missingness, conflicts, and quality checks.
+- [ ] 為 31 個協會建立官方網站與官方 Facebook 來源清單。
+- [ ] 蒐集並驗證 2023、2024、2025、2026 活動。
+- [ ] 分類健康、教育、志工、文化、生態、防災、社區照顧、數位、青年、食物與環境活動。
+- [ ] 產生活動年度趨勢、類型統計與 Markdown 報告。
+- [ ] 排除現有合成教學示例後發布正式活動資料。
 
-**Exit criterion:** the core dataset passes documented validation checks and every record has provenance.
+**完成條件：** 正式活動都有協會外鍵、期間、來源、證據等級與限制。
 
-## Phase 3 — Analysis
+## Sprint 3 — SDG 研究
 
-- [ ] Produce descriptive statistics and coverage diagnostics.
-- [ ] Develop temporal and geographic analyses.
-- [ ] Review findings for data-quality artifacts and alternative explanations.
-- [ ] Create reproducible figures and tables.
-- [ ] Complete an internal methodological review.
+- [ ] 對已驗證活動提出 SDG 候選。
+- [ ] 完成對應理由、成果指標、信心值與人工覆核。
+- [ ] 產生 SDG 涵蓋、社區比較與雷達圖。
+- [ ] 更新 Dashboard 與網站 SDG 分析。
 
-**Exit criterion:** key findings can be regenerated from documented inputs and reviewed analysis code.
+**完成條件：** 所有公開 SDG 結果可回溯至活動與來源，不含未覆核 AI 推論。
 
-## Phase 4 — Publication
+## Sprint 4 — AI 評分
 
-- [ ] Build the public dashboard and accessibility checks.
-- [ ] Build the project website and methodology pages.
-- [ ] Draft and review the research report.
-- [ ] Prepare citation metadata and a versioned release.
-- [ ] Publish appropriate data products with clear reuse terms.
+- [x] 建立評分構面、權重、資格、信心與公平性草案。
+- [ ] 完成正式資料資格檢查。
+- [ ] 進行人工評分者一致性、敏感度與偏誤分析。
+- [ ] 產生只含合格社區的可解釋排名。
+- [ ] 更新 Dashboard 與網站評分介面。
 
-**Exit criterion:** report, website, dashboard, and released data are mutually consistent and versioned.
+**完成條件：** 正式分數與名次經人工覆核，公開模型版本、信心、證據量及限制。
 
-## Phase 5 — Maintenance
+## Sprint 5 — 研究報告
 
-- [ ] Define an update cadence and responsible maintainers.
-- [ ] Track source changes and schema migrations.
-- [ ] Archive superseded outputs without breaking citations.
-- [ ] Review privacy, accessibility, and dependencies regularly.
-- [ ] Evaluate expansion beyond the 2023–2026 baseline.
+- [x] 建立萬華研究總覽、資料品質報告與 31 份基本檔案。
+- [x] 建立 Markdown、圖表、DOCX 與 PDF 自動產生流程。
+- [ ] 加入已驗證活動、SDG、合格評分、SWOT 與建議。
+- [ ] 完成引用、圖表一致性、版面與可近用性檢查。
 
-## Decision gates
+**完成條件：** 報告可從同版資料重建，引用可追溯且不含合成研究結果。
 
-Major changes to scope, methods, data sensitivity, or publication policy should be documented before implementation. Record notable changes in `CHANGELOG.md` and place durable methodological decisions in `docs/`.
+## Sprint 6 — Dashboard 與公開網站
+
+- [x] 建立響應式萬華 Dashboard、篩選、時間分布與資料詳情。
+- [x] 整合 Google Maps、多點標記、位置與大眾運輸連結。
+- [x] 建立 GitHub Pages 官方 Build → Upload → Deploy 流程。
+- [ ] 完成社區比較、正式活動、SDG 與評分視覺化。
+- [ ] 完成鍵盤操作、色彩對比、效能與跨裝置驗證。
+- [ ] 發布版本化網站、Dashboard、資料與報告。
+
+**完成條件：** 公開介面與同版資料、報告一致，CI 通過並具可回復的 Release。
+
+## 維護與擴充
+
+- [ ] 定義人工觸發的資料更新與年度完整覆核程序。
+- [ ] 建立 schema migration 與來源失效處理流程。
+- [ ] 建立引用 metadata、版本 Release 與長期保存策略。
+- [ ] 完成萬華區後，經方法審查再擴充至臺北市其他行政區。

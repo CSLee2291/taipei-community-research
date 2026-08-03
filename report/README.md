@@ -1,13 +1,13 @@
-# Report
+# 研究報告
 
-This directory will contain the long-form research report and its publication assets.
+本目錄保存長篇研究報告及其出版素材。
 
-## Suggested structure
+## 建議結構
 
-- `manuscript/` — report source files.
-- `figures/` — reproducibly generated charts, maps, and diagrams.
-- `tables/` — reproducibly generated tables.
-- `references/` — citation databases and reference metadata.
-- `output/` — generated PDF, HTML, or document builds; excluded from version control.
+- `manuscript/`：報告來源文件。
+- `figures/`：可重製的圖表、地圖與圖解。
+- `tables/`：可重製表格。
+- `references/`：引用資料庫與參考 metadata。
+- `output/`：產生的 PDF、HTML、DOCX、SVG 與 PNG；不納入版本控制。
 
-Report claims should link to analysis outputs, use versioned data, disclose limitations, and remain consistent with the dashboard and website release.
+報告主張必須連結分析輸出、使用版本化資料、揭露限制，並與同一 Release 的 Dashboard 及網站保持一致。

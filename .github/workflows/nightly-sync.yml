@@ -1,0 +1,66 @@
+name: Manual Research Sync
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manual-research-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Rebuild all generated research artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.0
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild research databases
+        run: |
+          node research/scripts/export-data-layer-json.mjs
+          node research/scripts/build-wanhua-database.mjs
+          node research/scripts/validate-data-layer.mjs
+
+      - name: Build dashboard
+        working-directory: dashboard
+        run: |
+          npm ci
+          npm test
+
+      - name: Build static website
+        run: node research/scripts/build-static-site.mjs
+
+      - name: Generate report source and charts
+        run: |
+          python -m pip install matplotlib
+          python research/scripts/generate-report-figures.py
+          node research/scripts/build-report-source.mjs
+
+      - name: Upload synchronized artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: manual-research-sync-${{ github.run_number }}
+          path: |
+            data/json
+            dashboard/dist
+            report/output
+            website/dist
+          if-no-files-found: error
+          retention-days: 14

@@ -1,7 +1,11 @@
-# Website
+# 公開研究網站
 
-This directory will contain the public project website, editorial content, and site-specific tests.
+本目錄保存公開專案網站、編輯內容與網站測試。
 
-The website should explain the research purpose, methods, limitations, contributors, citation guidance, releases, and paths to the dashboard and report. Published pages must be accessible, responsive, source-linked, and clear about the version and coverage of displayed evidence.
+網站應說明研究目的、方法、限制、貢獻方式、引用方法、版本，以及 Dashboard 與報告入口。發布頁面必須可近用、響應式、連結來源，並清楚標示資料版本與證據涵蓋。
 
-Generated content belongs under `website/public/generated/` and is excluded from version control.
+`website/dist/` 是 GitHub Pages 產生結果，不納入版本控制。執行：
+
+```bash
+node research/scripts/build-static-site.mjs
+```

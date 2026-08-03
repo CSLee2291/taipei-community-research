@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunityActivities.schema.json",
+  "title": "CommunityActivities",
+  "description": "每列代表一項社區活動、服務或持續性方案。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "activity_id",
+      "community_id",
+      "activity_name_zh",
+      "activity_type_code",
+      "recurring",
+      "evidence_level",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "activity_id": {
+        "type": "string",
+        "description": "活動穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "所屬社區識別碼。"
+      },
+      "activity_name_zh": {
+        "type": "string",
+        "description": "活動或方案中文名稱。"
+      },
+      "activity_type_code": {
+        "type": "string",
+        "description": "受控活動類別代碼。",
+        "enum": [
+          "health_promotion",
+          "environment",
+          "culture",
+          "education",
+          "care_service",
+          "other"
+        ]
+      },
+      "description_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動內容的事實性中文摘要。"
+      },
+      "start_date": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動或方案開始日期。",
+        "format": "date"
+      },
+      "end_date": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動或方案結束日期。",
+        "format": "date"
+      },
+      "recurring": {
+        "type": "boolean",
+        "description": "是否為週期性活動。"
+      },
+      "venue_name_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動場地名稱。"
+      },
+      "address_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動地址。"
+      },
+      "participant_count": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "有證據支持的參與人次。"
+      },
+      "target_groups": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "目標對象代碼，以分號分隔。"
+      },
+      "evidence_level": {
+        "type": "string",
+        "description": "活動存在與成果的證據層級。",
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "source_title": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動資料來源名稱。"
+      },
+      "source_url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "活動資料來源網址。",
+        "format": "uri"
+      },
+      "source_accessed_on": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "來源存取日期。",
+        "format": "date"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}

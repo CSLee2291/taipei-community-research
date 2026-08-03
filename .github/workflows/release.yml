@@ -1,0 +1,101 @@
+name: Create Research Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Semantic version tag, for example v0.1.0
+        required: true
+        default: v0.1.0
+        type: string
+      draft:
+        description: Create the release as a draft
+        required: true
+        default: true
+        type: boolean
+      prerelease:
+        description: Mark the release as a prerelease
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: create-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Validate and publish release
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.0
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Validate version
+        shell: bash
+        run: |
+          version="${{ inputs.version }}"
+          if [[ ! "${version}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Version must use semantic version syntax such as v0.1.0." >&2
+            exit 1
+          fi
+          if git rev-parse "${version}" >/dev/null 2>&1; then
+            echo "Tag ${version} already exists." >&2
+            exit 1
+          fi
+
+      - name: Validate research data
+        run: |
+          node research/scripts/validate-data-layer.mjs
+          node research/scripts/export-data-layer-json.mjs --check
+
+      - name: Test dashboard
+        working-directory: dashboard
+        run: |
+          npm ci
+          npm test
+
+      - name: Build static website
+        run: node research/scripts/build-static-site.mjs
+
+      - name: Package release assets
+        shell: bash
+        run: |
+          archive="wanhua-community-research-${{ inputs.version }}.tar.gz"
+          tar -czf "${archive}" +            data/csv +            data/json +            data/schema +            docs +            report/wanhua +            website/dist
+
+      - name: Create GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${{ inputs.version }}"
+          archive="wanhua-community-research-${version}.tar.gz"
+          arguments=(
+            "${version}"
+            "${archive}"
+            --target "${GITHUB_SHA}"
+            --title "Taipei Community Research ${version}"
+            --generate-notes
+          )
+          if [[ "${{ inputs.draft }}" == "true" ]]; then
+            arguments+=(--draft)
+          fi
+          if [[ "${{ inputs.prerelease }}" == "true" ]]; then
+            arguments+=(--prerelease)
+          fi
+          gh release create "${arguments[@]}"

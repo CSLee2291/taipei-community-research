@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunityProfile.schema.json",
+  "title": "CommunityProfile",
+  "description": "每列代表一個社區發展協會的核心研究檔案。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "profile_id",
+      "community_id",
+      "community_name_zh",
+      "association_name_zh",
+      "district_code",
+      "district_name_zh",
+      "organization_status",
+      "source_dataset_title",
+      "source_url",
+      "source_resource_updated_at",
+      "source_accessed_on",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "profile_id": {
+        "type": "string",
+        "description": "社區檔案穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "跨資料表使用的社區穩定識別碼。"
+      },
+      "community_name_zh": {
+        "type": "string",
+        "description": "社區中文簡稱。"
+      },
+      "association_name_zh": {
+        "type": "string",
+        "description": "社區發展協會法定中文名稱。"
+      },
+      "district_code": {
+        "type": "string",
+        "description": "官方行政區代碼，以文字保存。"
+      },
+      "district_name_zh": {
+        "type": "string",
+        "description": "行政區中文名稱。"
+      },
+      "village_name_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "地址所屬里別。"
+      },
+      "postal_code": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "郵遞區號，以文字保存。"
+      },
+      "address_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "政府名冊公布的協會地址。"
+      },
+      "latitude": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "WGS84 緯度十進位值。"
+      },
+      "longitude": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "WGS84 經度十進位值。"
+      },
+      "established_date": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "協會成立日期。",
+        "format": "date"
+      },
+      "registration_number": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "政府立案字號。"
+      },
+      "term_number": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "名冊所載屆次。"
+      },
+      "organization_status": {
+        "type": "string",
+        "description": "經證據支持的組織狀態；未提供時為 unknown。",
+        "enum": [
+          "active",
+          "inactive",
+          "dissolved",
+          "unknown"
+        ]
+      },
+      "source_dataset_title": {
+        "type": "string",
+        "description": "主要來源資料集名稱。"
+      },
+      "source_url": {
+        "type": "string",
+        "description": "主要來源資料集網址。",
+        "format": "uri"
+      },
+      "source_resource_updated_at": {
+        "type": "string",
+        "description": "來源資源更新時間。",
+        "format": "date-time"
+      },
+      "source_accessed_on": {
+        "type": "string",
+        "description": "研究團隊取得來源的日期。",
+        "format": "date"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunityFunding.schema.json",
+  "title": "CommunityFunding",
+  "description": "每列代表一項申請、核定或執行中的資金紀錄。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "funding_id",
+      "community_id",
+      "fiscal_year",
+      "program_name_zh",
+      "funder_name_zh",
+      "funding_type",
+      "funding_status",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "funding_id": {
+        "type": "string",
+        "description": "資金紀錄穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "受資助社區識別碼。"
+      },
+      "activity_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "相關活動識別碼。"
+      },
+      "fiscal_year": {
+        "type": "integer",
+        "description": "會計年度，使用西元。"
+      },
+      "program_name_zh": {
+        "type": "string",
+        "description": "補助或資助計畫名稱。"
+      },
+      "funder_name_zh": {
+        "type": "string",
+        "description": "資助單位名稱。"
+      },
+      "funding_type": {
+        "type": "string",
+        "description": "資金類型。",
+        "enum": [
+          "grant",
+          "subsidy",
+          "donation",
+          "self_funded",
+          "in_kind",
+          "other"
+        ]
+      },
+      "funding_status": {
+        "type": "string",
+        "description": "資金流程狀態。",
+        "enum": [
+          "applied",
+          "approved",
+          "rejected",
+          "active",
+          "completed",
+          "cancelled",
+          "unknown"
+        ]
+      },
+      "award_date": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "核定日期。",
+        "format": "date"
+      },
+      "period_start": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "執行期間開始日。",
+        "format": "date"
+      },
+      "period_end": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "執行期間結束日。",
+        "format": "date"
+      },
+      "amount_requested_twd": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "申請金額，新臺幣。"
+      },
+      "amount_awarded_twd": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "核定金額，新臺幣。"
+      },
+      "cofunding_twd": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "共同出資金額，新臺幣。"
+      },
+      "reported_spend_twd": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "公開報告支出金額，新臺幣。"
+      },
+      "public_record_identifier": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "政府公開紀錄識別碼。"
+      },
+      "source_title": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "資金資料來源名稱。"
+      },
+      "source_url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "資金資料來源網址。",
+        "format": "uri"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}

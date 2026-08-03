@@ -1,0 +1,30 @@
+{
+  "dataset": "CommunityAwards",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-03T10:00:00Z",
+  "record_count": 1,
+  "records": [
+    {
+      "award_id": "AWD-EXAMPLE-0001",
+      "community_id": "COM-0001",
+      "activity_id": "ACT-EXAMPLE-0001",
+      "award_name_zh": "社區健康促進示例獎（非真實）",
+      "awarding_body_zh": "教學示例機構（非真實）",
+      "award_level": "city",
+      "award_category_zh": "健康促進",
+      "awarded_date": "2025-12-01",
+      "award_year": 2025,
+      "rank_or_result": "示例優等",
+      "evidence_url": null,
+      "source_title": "研究資料層教學示例",
+      "source_accessed_on": "2026-08-03",
+      "record_status": "draft",
+      "data_quality_flag": "synthetic_example",
+      "is_example": true,
+      "created_at": "2026-08-03T10:00:00Z",
+      "updated_at": "2026-08-03T10:00:00Z",
+      "schema_version": "1.0.0",
+      "notes": "合成範例，不代表任何組織實際得獎。"
+    }
+  ]
+}
