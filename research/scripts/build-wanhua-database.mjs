@@ -4,6 +4,8 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "../..");
 const sourcePath = path.join(root, "data/external/taipei-city/2026-03-31/community-development-associations.csv");
 const databasePath = path.join(root, "data/processed/wanhua-community-associations.json");
+const dashboardDataPath = path.join(root, "dashboard/app/data/wanhua-community-associations.json");
+const dashboardDownloadPath = path.join(root, "dashboard/public/data/wanhua-community-associations.json");
 const idMapPath = path.join(root, "research/mappings/wanhua-community-ids.json");
 const reportRoot = path.join(root, "report/wanhua");
 const profileRoot = path.join(reportRoot, "associations");
@@ -210,6 +212,10 @@ const database = {
 await fs.mkdir(path.dirname(databasePath), { recursive: true });
 await fs.mkdir(profileRoot, { recursive: true });
 await fs.writeFile(databasePath, `${JSON.stringify(database, null, 2)}\n`, "utf8");
+await fs.mkdir(path.dirname(dashboardDataPath), { recursive: true });
+await fs.mkdir(path.dirname(dashboardDownloadPath), { recursive: true });
+await fs.copyFile(databasePath, dashboardDataPath);
+await fs.copyFile(databasePath, dashboardDownloadPath);
 
 const overviewRows = communities.map((community) => `| [${community.community_id}](associations/${community.community_id}.md) | ${markdownValue(community.community_name_zh)} | ${markdownValue(community.village_name_zh)} | ${markdownValue(community.established_date)} | ${community.latitude === null ? "缺" : "有"} | ${markdownValue(community.source_record.upload_date)} |`).join("\n");
 const overview = `# 臺北市萬華區社區發展協會研究總覽
