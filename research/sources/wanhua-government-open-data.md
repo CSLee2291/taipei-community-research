@@ -66,3 +66,9 @@ Repository 保存原始 PDF 與隱私最小化轉錄。官方檔案另含理事�
 - 5 筆成立日期、6 筆立案字號與 18 筆座標目前缺值；缺值不代表協會未成立、未立案或沒有地址。
 - 官方名冊未提供活動、補助、獎項、會員、志工、關懷據點、評鑑或 SDG 成效。
 - 組織聯絡管道、關懷據點、會員、志工與評鑑欄位需另尋官方來源後才可加入。
+
+## Sprint 2 活動來源延伸
+
+2023–2026 年活動研究另以臺北市政府社會局公布的社區發展及互助共好補助計畫核定表為來源。官方文件清單、發布頁與直接下載網址集中於 [`wanhua-community-activity-sources.json`](wanhua-community-activity-sources.json)，逐列轉錄集中於 [`wanhua-community-activity-approvals-2023-2026.csv`](wanhua-community-activity-approvals-2023-2026.csv)。
+
+核定表只支持方案獲核定、核定名稱與預定期間；沒有核銷或成果文件時，不得推論方案已執行、已完成，亦不得將預計受益人數當作實際參與人次。33 個協會的來源槽位與待查項目另見 [`wanhua-association-online-source-audit.csv`](wanhua-association-online-source-audit.csv)。

@@ -7,7 +7,7 @@
     {
       "community_sdg_id": "SDG-EXAMPLE-0001",
       "community_id": "COM-0001",
-      "activity_id": "ACT-EXAMPLE-0001",
+      "activity_id": null,
       "sdg_goal": 3,
       "sdg_target": "3.4",
       "alignment_type": "direct",
@@ -32,7 +32,7 @@
     {
       "community_sdg_id": "SDG-EXAMPLE-0002",
       "community_id": "COM-0002",
-      "activity_id": "ACT-EXAMPLE-0002",
+      "activity_id": null,
       "sdg_goal": 11,
       "sdg_target": "11.3",
       "alignment_type": "indirect",

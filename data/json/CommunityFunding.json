@@ -7,7 +7,7 @@
     {
       "funding_id": "FND-EXAMPLE-0001",
       "community_id": "COM-0001",
-      "activity_id": "ACT-EXAMPLE-0001",
+      "activity_id": null,
       "fiscal_year": 2025,
       "program_name_zh": "社區健康促進教學示例補助（非真實）",
       "funder_name_zh": "教學示例機構（非真實）",

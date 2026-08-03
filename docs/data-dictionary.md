@@ -56,14 +56,14 @@
 | `activity_id` | string | 是 | 活動穩定識別碼。 | — |
 | `community_id` | string | 是 | 所屬社區識別碼。 | — |
 | `activity_name_zh` | string | 是 | 活動或方案中文名稱。 | — |
-| `activity_type_code` | string | 是 | 受控活動類別代碼。 | `health_promotion`、`environment`、`culture`、`education`、`care_service`、`other` |
+| `activity_type_code` | string | 是 | 受控活動類別代碼。 | `health_promotion`、`education`、`volunteer_service`、`culture`、`ecology`、`disaster_preparedness`、`care_service`、`digital_learning`、`youth_engagement`、`food_support`、`environment`、`other` |
 | `description_zh` | string | 否 | 活動內容的事實性中文摘要。 | — |
 | `start_date` | date | 否 | 活動或方案開始日期。 | `YYYY-MM-DD` |
 | `end_date` | date | 否 | 活動或方案結束日期。 | `YYYY-MM-DD` |
 | `recurring` | boolean | 是 | 是否為週期性活動。 | `true`、`false` |
 | `venue_name_zh` | string | 否 | 活動場地名稱。 | — |
 | `address_zh` | string | 否 | 活動地址。 | — |
-| `participant_count` | integer | 否 | 有證據支持的參與人次。 | — |
+| `participant_count` | integer | 否 | 有成果證據支持的實際參與人次；核定表的預計受益人數不得填入。 | — |
 | `target_groups` | string | 否 | 目標對象代碼，以分號分隔。 | — |
 | `evidence_level` | string | 是 | 活動存在與成果的證據層級。 | `A`、`B`、`C`、`D` |
 | `source_title` | string | 否 | 活動資料來源名稱。 | — |
@@ -75,7 +75,7 @@
 | `created_at` | datetime | 是 | 專案紀錄建立時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `updated_at` | datetime | 是 | 專案紀錄最後更新時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `schema_version` | string | 是 | 此筆紀錄遵循的資料結構版本。 | — |
-| `notes` | string | 否 | 補充說明、限制或資料處理註記。 | — |
+| `notes` | string | 否 | 補充說明、原始期間、核定表定位資訊、預計受益人數與證據限制。 | — |
 
 ## CommunityAwards
 

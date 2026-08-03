@@ -39,10 +39,16 @@
         "description": "受控活動類別代碼。",
         "enum": [
           "health_promotion",
-          "environment",
-          "culture",
           "education",
+          "volunteer_service",
+          "culture",
+          "ecology",
+          "disaster_preparedness",
           "care_service",
+          "digital_learning",
+          "youth_engagement",
+          "food_support",
+          "environment",
           "other"
         ]
       },

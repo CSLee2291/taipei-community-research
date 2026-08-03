@@ -14,10 +14,11 @@
 
 六組應用資料集是 `CommunityProfile`、`CommunityActivities`、`CommunityAwards`、`CommunitySDGs`、`CommunityFunding` 與 `CommunityAIRanking`。機器可讀契約位於 `schema/*.schema.json`，人工可讀定義位於 `docs/data-dictionary.md`。
 
-`is_example=true` 或 `data_quality_flag=synthetic_example` 的紀錄只用於展示資料模型，必須排除於研究結論、Dashboard 正式統計與公開排名。
+`CommunityProfile` 與 `CommunityActivities` 已發布正式來源紀錄；活動層的統計單位是官方核定方案，不是完成場次。`is_example=true` 或 `data_quality_flag=synthetic_example` 的紀錄只用於展示資料模型，必須排除於研究結論、Dashboard 正式統計與公開排名。
 
 ```bash
 node research/scripts/validate-data-layer.mjs
+node research/scripts/build-community-activities.mjs
 ```
 
 ## 資料集要求

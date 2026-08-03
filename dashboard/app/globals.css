@@ -264,6 +264,113 @@ a {
   text-align: right;
 }
 
+.activity-overview {
+  display: grid;
+  gap: 20px;
+}
+
+.activity-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--teal-dark);
+  background: var(--teal-dark);
+  color: white;
+}
+
+.activity-stat-strip article {
+  min-height: 116px;
+  padding: 22px 24px;
+  border-right: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.activity-stat-strip article:last-child {
+  border-right: 0;
+}
+
+.activity-stat-strip span {
+  display: block;
+  color: #b9d0c9;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.activity-stat-strip strong {
+  display: block;
+  margin-top: 12px;
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.activity-stat-strip small {
+  color: #b9d0c9;
+  font-size: 18px;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 20px;
+}
+
+.activity-panel {
+  min-width: 0;
+}
+
+.activity-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px 24px;
+}
+
+.activity-bars.compact {
+  gap: 13px;
+}
+
+.activity-bar-row {
+  display: grid;
+  grid-template-columns: minmax(84px, 116px) 1fr 24px;
+  gap: 14px;
+  align-items: center;
+}
+
+.activity-bar-row strong,
+.activity-bar-row span {
+  font-size: 11px;
+}
+
+.activity-bar-track {
+  height: 9px;
+  background: var(--paper-deep);
+}
+
+.activity-bar-fill {
+  height: 100%;
+  background: var(--red);
+}
+
+.activity-bar-fill.year {
+  background: var(--gold);
+}
+
+.activity-boundary {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--gold);
+  background: rgb(255 253 248 / 0.72);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.activity-boundary a {
+  color: var(--teal);
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
 .analysis-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
@@ -733,6 +840,7 @@ a {
 @media (max-width: 1040px) {
   .hero,
   .analysis-grid,
+  .activity-grid,
   .directory-grid {
     grid-template-columns: 1fr;
   }
@@ -743,6 +851,19 @@ a {
 
   .metric-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .activity-stat-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-stat-strip article {
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  }
+
+  .activity-stat-strip article:last-child {
+    border-bottom: 0;
   }
 
   .metric:nth-child(2) {

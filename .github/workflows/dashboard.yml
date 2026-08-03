@@ -27,6 +27,9 @@ jobs:
           cache: npm
           cache-dependency-path: dashboard/package-lock.json
 
+      - name: Rebuild Wanhua activity research outputs
+        run: node research/scripts/build-community-activities.mjs
+
       - name: Validate research data
         run: node research/scripts/validate-data-layer.mjs
 

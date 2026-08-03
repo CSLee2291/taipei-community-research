@@ -40,6 +40,9 @@ jobs:
       - name: Check Markdown links
         run: node research/scripts/check-markdown-links.mjs
 
+      - name: Rebuild Wanhua activity research outputs
+        run: node research/scripts/build-community-activities.mjs
+
       - name: Validate research data
         run: node research/scripts/validate-data-layer.mjs
 
@@ -58,7 +61,16 @@ jobs:
             dashboard/app/data/wanhua-community-associations.json \
             dashboard/public/data/wanhua-community-associations.json \
             docs/community-list.md \
-            report/wanhua
+            report/wanhua \
+            data/csv/CommunityActivities.csv \
+            data/json/CommunityActivities.json \
+            data/processed/wanhua-community-activity-statistics.json \
+            dashboard/app/data/wanhua-community-activities.json \
+            dashboard/public/data/wanhua-community-activities.json \
+            docs/activity-research.md \
+            docs/activity-source-audit.md \
+            docs/activity-statistics.md \
+            research/sources/wanhua-association-online-source-audit.csv
 
       - name: Check Python syntax
         run: python -m compileall -q research/scripts
