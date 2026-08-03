@@ -43,7 +43,8 @@ export type Database = {
     record_count: number;
   };
   attribution: {
-    dataset_url: string;
+    primary_dataset_url: string;
+    secondary_dataset_url: string;
     license_url: string;
     attribution_statement: string;
   };
@@ -114,8 +115,8 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
             <span>Wanhua civic research index</span>
           </div>
         </div>
-        <a className="source-link" href={database.attribution.dataset_url} target="_blank" rel="noreferrer">
-          <span>臺北市政府開放資料</span>
+        <a className="source-link" href={database.attribution.primary_dataset_url} target="_blank" rel="noreferrer">
+          <span>臺北市政府官方名冊</span>
           <b aria-hidden="true">↗</b>
         </a>
       </header>
@@ -123,10 +124,10 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
       <section className="hero">
         <div>
           <p className="eyebrow">Government open data · 2026 release</p>
-          <h1><em>31</em> 個社區，<br />一份可追溯的萬華視圖</h1>
+          <h1><em>{database.coverage.record_count}</em> 個社區，<br />一份可追溯的萬華視圖</h1>
         </div>
         <div className="hero-copy">
-          <p>從臺北市社會局公開名冊出發，整理萬華區社區發展協會的地址、成立時間、立案資料與空間座標。每個數字都保留來源，也保留不知道的部分。</p>
+          <p>以萬華區公所官方名冊定義母體，並用臺北市社會局全市資料補充可交叉驗證的成立時間、立案資料與空間座標。每個數字都保留來源，也保留不知道的部分。</p>
           <div className="hero-note"><strong>資料邊界</strong><span>名冊沒有營運狀態、活動、補助、獎項或 SDG 資料；本儀表板不從缺席的欄位推論結論。</span></div>
         </div>
       </section>
@@ -136,7 +137,7 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
           <article className="metric"><span className="metric-label">協會紀錄</span><strong className="metric-value">{database.coverage.record_count}</strong><span className="metric-foot">行政區代碼 63000070</span></article>
           <article className="metric"><span className="metric-label">地址涵蓋里別</span><strong className="metric-value">{database.quality_summary.unique_address_villages}</strong><span className="metric-foot">由官方地址文字抽取</span></article>
           <article className="metric"><span className="metric-label">核心欄位完整率</span><strong className="metric-value">{Math.round((database.quality_summary.complete_core_records / database.coverage.record_count) * 100)}%</strong><span className="metric-foot">日期、立案與座標</span></article>
-          <article className="metric"><span className="metric-label">已知成立年份</span><strong className="metric-value">{database.quality_summary.earliest_known_establishment_year}–{String(database.quality_summary.latest_known_establishment_year).slice(2)}</strong><span className="metric-foot">3 筆成立日期未提供</span></article>
+          <article className="metric"><span className="metric-label">已知成立年份</span><strong className="metric-value">{database.quality_summary.earliest_known_establishment_year}–{String(database.quality_summary.latest_known_establishment_year).slice(2)}</strong><span className="metric-foot">{database.coverage.record_count - Object.values(database.quality_summary.establishment_decade_counts).reduce((sum, count) => sum + count, 0)} 筆成立日期未提供</span></article>
         </section>
 
         <div className="section-heading">
@@ -205,7 +206,7 @@ export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database:
       </main>
 
       <footer className="site-footer">
-        <div><strong>萬華社區研究</strong>臺北市政府社會局 2026 開放資料衍生研究 · 存取日 {database.generated_on}</div>
+        <div><strong>萬華社區研究</strong>萬華區公所與臺北市政府社會局 2026 官方資料衍生研究 · 存取日 {database.generated_on}</div>
         <div className="footer-links"><a href="/data/wanhua-community-associations.json" download>下載 JSON</a><a href={database.attribution.license_url} target="_blank" rel="noreferrer">授權條款</a></div>
       </footer>
     </div>

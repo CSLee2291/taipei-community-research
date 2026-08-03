@@ -1,68 +1,68 @@
-# Wanhua Community Development Associations — Government Source Register
+# 萬華區社區發展協會政府來源登錄
 
-Status: Verified source selection
+狀態：Sprint 1 母體與交叉比對來源已驗證
 
-Access date: 2026-08-03
+存取日期：2026-08-03
 
-## Coverage definition
+## 涵蓋定義
 
-For this release, “all Taipei Wanhua Community Development Associations” means every row in the current consolidated Taipei City association dataset whose official administrative district code is `63000070`. The source contains 371 Taipei records, of which 31 meet that rule.
+本版「萬華區全部登記社區發展協會」以臺北市萬華區公所 2026-02-12 公布的「萬華區社區發展協會組織區域一覽表」為母體。PDF 依序編號 1–33，共 33 筆。
 
-This is a dataset-defined inventory, not an independent legal determination of whether an organization is currently operating. The dataset does not publish a dedicated operational-status field.
+臺北市政府社會局 2026-03-31 全市 CSV 共 371 筆，其中行政區代碼 `63000070` 的萬華區紀錄有 31 筆，且全部能以正式名稱對應區公所名冊。「愛在孝德社區發展協會」與「西門社區發展協會」只出現在區公所名冊，因此成立日期、立案字號與座標保持空值並列入 TODO。
 
-## Primary source
+名冊列入只證明政府來源列有該協會，不代表本研究已獨立確認其目前營運狀態；來源沒有專用營運狀態欄位。
 
-### Taipei City community development association dataset
+## 主要來源
 
-- Official title: [臺北市社區發展服務_社區發展協會](https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3)
-- Publisher: Taipei City Government Department of Social Welfare
-- Dataset ID: `e81a07f7-8137-4019-a96f-210a00ef72a3`
-- Resource ID: `654f0abf-b859-4a1d-8dcd-28c733313c1c`
-- Published format: CSV
-- Resource update displayed by publisher: 2026-03-31 15:13:03
-- Metadata update displayed by publisher: 2026-03-31 15:46:58
-- Update frequency: irregular
-- License: [Open Government Data License, Version 1.0](https://data.taipei/rule)
-- Research use: authoritative inventory and source for association name, district code, address, registration, establishment date, coordinates, agency fields, and source upload date
+### 萬華區公所協會一覽表
 
-The license permits reuse and adaptation without a royalty, subject to attribution. The repository preserves an unchanged snapshot and provides explicit attribution with derivative outputs.
+- 官方頁面：[萬華區社區發展協會一覽表](https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249)
+- 列表頁：[社區發展協會](https://whdo.gov.taipei/News.aspx?n=C0AA7DA1A318888E&sms=9CDDA66829FF2249)
+- 發布者：臺北市萬華區公所
+- 上版日期：2026-02-12（民國 115 年）
+- 格式：PDF，3 頁
+- SHA-256：`bc6603964590a180fb9cd867aa0c416fe486cc9042c74233c1d88c7f69960166`
+- 研究用途：定義 33 筆母體，確認協會正式名稱、社區範圍、屆期與現址
 
-## Government cross-checks
+Repository 保存原始 PDF 與隱私最小化轉錄。官方檔案另含理事長姓名與電話，本研究不在公開衍生資料中轉載。
 
-### Wanhua District Office association list
+## 交叉比對來源
 
-- Page: [萬華區社區發展協會一覽表](https://whdo.gov.taipei/News_Content.aspx?n=C0AA7DA1A318888E&s=E6F2F710D4BA58ED&sms=9CDDA66829FF2249)
-- Listing page: [社區發展協會](https://whdo.gov.taipei/News.aspx?n=C0AA7DA1A318888E&sms=9CDDA66829FF2249)
-- Publisher: Taipei City Wanhua District Office
-- Listing date shown by the publisher: 2026-02-12 (ROC year 115)
-- Research use: independent government cross-check of the existence of a current district-level list
+### 臺北市社區發展服務_社區發展協會
 
-### Historical Wanhua-specific dataset
+- 官方資料集：[臺北市社區發展服務_社區發展協會](https://data.taipei/dataset/detail?id=e81a07f7-8137-4019-a96f-210a00ef72a3)
+- 發布者：臺北市政府社會局
+- Dataset ID：`e81a07f7-8137-4019-a96f-210a00ef72a3`
+- Resource ID：`654f0abf-b859-4a1d-8dcd-28c733313c1c`
+- 格式：CSV
+- 資源更新：2026-03-31 15:13:03
+- Metadata 更新：2026-03-31 15:46:58
+- 授權：[政府資料開放授權條款第 1 版](https://data.taipei/rule)
+- 研究用途：交叉比對 31 筆正式名稱，補充成立日期、立案字號、郵遞區號與地址未變更時的座標
 
-- Dataset: [臺北市社區發展服務_社區發展協會(萬華)](https://data.taipei/dataset/detail?id=820c1c94-67ae-491b-a6cc-34a1bd247b73)
-- Publisher: Taipei City Government Department of Social Welfare
-- Published format: XML
-- Resource update displayed by publisher: 2024-12-20 16:08:24
-- Research use: historical metadata and field-definition cross-check only
+### 歷史萬華專屬資料集
 
-The consolidated CSV is used as the primary source because its published resource date is later and it provides one consistent citywide schema.
+- 資料集：[臺北市社區發展服務_社區發展協會（萬華）](https://data.taipei/dataset/detail?id=820c1c94-67ae-491b-a6cc-34a1bd247b73)
+- 發布者：臺北市政府社會局
+- 格式：XML
+- 資源更新：2024-12-20 16:08:24
+- 研究用途：只作歷史 metadata 與欄位定義參考，不用來覆蓋較新來源
 
-## Transformation rules
+## 轉換規則
 
-1. Filter rows by exact district code `63000070`.
-2. Preserve the full official association name in `association_name_zh`.
-3. Derive a short community label only by removing the fixed prefix `臺北市萬華區` and suffix `社區發展協會`; preserve the original name separately.
-4. Convert ROC dates in `YYYMMDD` form to Gregorian ISO 8601 dates by adding 1911 to the year.
-5. Parse coordinates as decimal numbers; empty coordinates remain null.
-6. Assign stable project identifiers from the maintained name-to-ID mapping; additions or renames require manual review before regeneration.
-7. Treat blank source cells as unknown, never as zero or a negative finding.
-8. Do not infer operational status from dataset inclusion; use `unknown` unless another authoritative source explicitly states a status.
-9. Exclude chairperson names, direct telephone numbers, fax numbers, and email addresses from public derivatives under the project’s data-minimization policy.
+1. 以區公所名冊編號 1–33 建立母體並檢查編號連續性。
+2. 以正式協會名稱對應穩定 `COM-####` 研究 ID；新增或更名需人工覆核映射表。
+3. 區公所的社區範圍、屆期與地址視為目前名冊值。
+4. 全市 CSV 只選取行政區代碼 `63000070`，並要求 31 筆全部能對應區公所母體。
+5. 民國 `YYYMMDD` 日期加 1911 轉為 ISO 8601 西元日期；空白維持 null。
+6. 兩來源地址相同時才沿用全市 CSV 座標；地址不同時暫不沿用舊址座標並建立重新定位 TODO。
+7. 不從名冊列入推論營運狀態，`organization_status` 維持 `unknown`。
+8. 不在公開衍生資料轉載理事長、直接電話、傳真或電子郵件。
 
-## Known limitations
+## 已知限制與 TODO
 
-- Source upload dates vary by record and can be much older than the resource publication date.
-- Blank registration, establishment, or coordinate values are retained as missing.
-- The dataset describes registered associations and contact information, not activities, funding, awards, membership, service quality, or current operating capacity.
-- Multiple associations can refer to the same neighborhood or address area; records are not deduplicated by village name.
-- A district-level government page can change between snapshots. Future releases should repeat the cross-check and document additions, removals, and renamed associations.
+- 2 筆區公所獨有紀錄尚無可交叉驗證的成立日期、立案字號與座標。
+- 8 筆地址與全市 CSV 不同，舊址座標已暫停沿用，待以官方地理資料重新定位。
+- 5 筆成立日期、6 筆立案字號與 18 筆座標目前缺值；缺值不代表協會未成立、未立案或沒有地址。
+- 官方名冊未提供活動、補助、獎項、會員、志工、關懷據點、評鑑或 SDG 成效。
+- 組織聯絡管道、關懷據點、會員、志工與評鑑欄位需另尋官方來源後才可加入。

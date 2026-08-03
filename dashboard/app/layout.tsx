@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
   const title = "萬華社區研究｜臺北市政府開放資料";
-  const description = "以臺北市政府開放資料整理 31 個萬華區社區發展協會的研究儀表板。";
+  const description = "以臺北市政府官方名冊整理 33 個萬華區社區發展協會的研究儀表板。";
 
   return {
     title,
