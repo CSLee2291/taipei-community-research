@@ -21,3 +21,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Normalized Wanhua JSON database, overview report, data-quality report, and 31 association profiles.
 - Interactive Wanhua research dashboard with filtering, coordinate view, timeline, record details, and JSON download.
 - Google Maps integration with synchronized association selection, location links, transit directions, and optional multi-marker API mode.
+- Versioned research data layer with CSV, JSON, JSON Schema, raw-data conventions, a six-sheet review workbook, methodology, evaluation model, and comprehensive data dictionary.

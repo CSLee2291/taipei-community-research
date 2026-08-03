@@ -1,5 +1,12 @@
 # Documentation
 
+## Core documents
+
+- `methodology.md` — research scope, evidence hierarchy, data lifecycle, ethics, quality assurance, and limitations.
+- `evaluation-model.md` — eligibility rules, scoring dimensions, weights, confidence, ranking, and AI governance.
+- `data-dictionary.md` — field-by-field definitions for all six application-layer datasets.
+- `research-protocol.md` — repository-wide research workflow and review protocol.
+
 This directory contains durable project documentation: governance, methodology, data definitions, technical decisions, and publication procedures.
 
 ## Planned documents

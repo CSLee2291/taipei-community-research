@@ -1,10 +1,21 @@
 # Research Database Schema
 
-Version: 1.0.0
+Version: 1.1.0
 
-Status: Initial schema
+Status: Active research data layer
 
-This directory defines the normalized interchange schema for Taipei community research. The CSV files are headers-only templates: one row represents one entity or relationship, and each column contains one data type. `CommunityProfile.json` is a JSON Schema 2020-12 document for a consolidated community view.
+This directory defines the normalized interchange schema for Taipei community research. The original CSV files remain headers-only normalized templates. The six `*.schema.json` files define the application-layer CSV and JSON publications with representative records under `data/csv/` and `data/json/`. `CommunityProfile.json` remains the consolidated profile API schema.
+
+## Application-layer schemas
+
+| Schema | CSV / JSON dataset | Purpose |
+| --- | --- | --- |
+| `CommunityProfile.schema.json` | `CommunityProfile` | Source-backed community identity and provenance |
+| `CommunityActivities.schema.json` | `CommunityActivities` | Programs, services, and events |
+| `CommunityAwards.schema.json` | `CommunityAwards` | Evidence-backed recognition records |
+| `CommunitySDGs.schema.json` | `CommunitySDGs` | Reviewable SDG alignment assessments |
+| `CommunityFunding.schema.json` | `CommunityFunding` | Funding application, award, and spending records |
+| `CommunityAIRanking.schema.json` | `CommunityAIRanking` | Versioned, explainable evaluation output |
 
 ## Tables
 

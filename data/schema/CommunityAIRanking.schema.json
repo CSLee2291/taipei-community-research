@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunityAIRanking.schema.json",
+  "title": "CommunityAIRanking",
+  "description": "每列代表一個社區於特定評估期間及模型版本下的可稽核評分。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "ranking_id",
+      "community_id",
+      "evaluation_period_start",
+      "evaluation_period_end",
+      "model_version",
+      "eligibility_status",
+      "profile_completeness_score",
+      "community_participation_score",
+      "sdg_impact_score",
+      "governance_score",
+      "resource_sustainability_score",
+      "total_score",
+      "rank_scope",
+      "confidence_score",
+      "evidence_record_count",
+      "generated_at",
+      "model_notes",
+      "source_methodology_url",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "ranking_id": {
+        "type": "string",
+        "description": "評分紀錄穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "受評社區識別碼。"
+      },
+      "evaluation_period_start": {
+        "type": "string",
+        "description": "評估期間開始日。",
+        "format": "date"
+      },
+      "evaluation_period_end": {
+        "type": "string",
+        "description": "評估期間結束日。",
+        "format": "date"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "評分模型版本。"
+      },
+      "eligibility_status": {
+        "type": "string",
+        "description": "是否符合正式排名資格。",
+        "enum": [
+          "eligible",
+          "provisional",
+          "ineligible"
+        ]
+      },
+      "profile_completeness_score": {
+        "type": "number",
+        "description": "基本資料完整性分數，0–100，權重 20%。"
+      },
+      "community_participation_score": {
+        "type": "number",
+        "description": "社區參與分數，0–100，權重 20%。"
+      },
+      "sdg_impact_score": {
+        "type": "number",
+        "description": "SDG 與公共價值分數，0–100，權重 25%。"
+      },
+      "governance_score": {
+        "type": "number",
+        "description": "治理與透明度分數，0–100，權重 20%。"
+      },
+      "resource_sustainability_score": {
+        "type": "number",
+        "description": "資源永續分數，0–100，權重 15%。"
+      },
+      "total_score": {
+        "type": "number",
+        "description": "五構面加權總分，0–100。"
+      },
+      "rank_scope": {
+        "type": "string",
+        "description": "排名比較母體或範圍。"
+      },
+      "rank_position": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "同一範圍內名次；不合格者留空。"
+      },
+      "confidence_score": {
+        "type": "number",
+        "description": "證據充分程度，0–1；不直接改寫總分。"
+      },
+      "evidence_record_count": {
+        "type": "integer",
+        "description": "納入評分的可追溯證據筆數。"
+      },
+      "generated_at": {
+        "type": "string",
+        "description": "評分產生時間。",
+        "format": "date-time"
+      },
+      "model_notes": {
+        "type": "string",
+        "description": "模型限制、缺值與人工覆核說明。"
+      },
+      "source_methodology_url": {
+        "type": "string",
+        "description": "評分方法文件的專案相對路徑或網址。"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}

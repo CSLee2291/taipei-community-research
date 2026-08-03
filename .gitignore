@@ -60,9 +60,12 @@ data/processed/*
 !data/external/taipei-city/2026-03-31/community-development-associations.csv
 !data/external/taipei-city/2026-03-31/README.md
 !data/raw/.gitkeep
+!data/raw/README.md
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 !data/processed/wanhua-community-associations.json
+!data/processed/README.md
+!data/processed/data-layer-examples.xlsx
 
 # Generated publication output
 dashboard/output/

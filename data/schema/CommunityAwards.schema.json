@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunityAwards.schema.json",
+  "title": "CommunityAwards",
+  "description": "每列代表一項可驗證的獎項、表揚或競賽結果。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "award_id",
+      "community_id",
+      "award_name_zh",
+      "awarding_body_zh",
+      "award_level",
+      "award_year",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "award_id": {
+        "type": "string",
+        "description": "獎項紀錄穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "獲獎社區識別碼。"
+      },
+      "activity_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "相關活動識別碼。"
+      },
+      "award_name_zh": {
+        "type": "string",
+        "description": "獎項中文名稱。"
+      },
+      "awarding_body_zh": {
+        "type": "string",
+        "description": "頒獎單位中文名稱。"
+      },
+      "award_level": {
+        "type": "string",
+        "description": "獎項層級。",
+        "enum": [
+          "community",
+          "district",
+          "city",
+          "national",
+          "international",
+          "other"
+        ]
+      },
+      "award_category_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "獎項分類。"
+      },
+      "awarded_date": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "頒發日期。",
+        "format": "date"
+      },
+      "award_year": {
+        "type": "integer",
+        "description": "頒發西元年份。"
+      },
+      "rank_or_result": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "名次或結果文字。"
+      },
+      "evidence_url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "官方得獎證明網址。",
+        "format": "uri"
+      },
+      "source_title": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "獎項資料來源名稱。"
+      },
+      "source_accessed_on": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "來源存取日期。",
+        "format": "date"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}

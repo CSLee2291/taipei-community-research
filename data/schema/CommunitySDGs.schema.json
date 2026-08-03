@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunitySDGs.schema.json",
+  "title": "CommunitySDGs",
+  "description": "每列代表一項有證據鏈的社區或活動 SDG 對應評估。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "community_sdg_id",
+      "community_id",
+      "sdg_goal",
+      "alignment_type",
+      "evidence_summary_zh",
+      "confidence_score",
+      "assessment_method",
+      "assessed_on",
+      "reviewer_role",
+      "record_status",
+      "data_quality_flag",
+      "is_example",
+      "created_at",
+      "updated_at",
+      "schema_version"
+    ],
+    "properties": {
+      "community_sdg_id": {
+        "type": "string",
+        "description": "SDG 評估穩定識別碼。"
+      },
+      "community_id": {
+        "type": "string",
+        "description": "受評社區識別碼。"
+      },
+      "activity_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "相關活動識別碼。"
+      },
+      "sdg_goal": {
+        "type": "integer",
+        "description": "聯合國永續發展目標編號 1–17。"
+      },
+      "sdg_target": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "SDG 細項目標代碼，例如 3.4。"
+      },
+      "alignment_type": {
+        "type": "string",
+        "description": "貢獻類型。",
+        "enum": [
+          "direct",
+          "indirect",
+          "enabling"
+        ]
+      },
+      "evidence_summary_zh": {
+        "type": "string",
+        "description": "支持此對應的中文證據摘要。"
+      },
+      "indicator_name_zh": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "使用的成果指標名稱。"
+      },
+      "observed_value": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "觀測值。"
+      },
+      "observed_unit": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "觀測值單位。"
+      },
+      "confidence_score": {
+        "type": "number",
+        "description": "對應信心水準，0–1。"
+      },
+      "assessment_method": {
+        "type": "string",
+        "description": "評估方式。",
+        "enum": [
+          "rule_based",
+          "human_review",
+          "mixed"
+        ]
+      },
+      "assessed_on": {
+        "type": "string",
+        "description": "評估日期。",
+        "format": "date"
+      },
+      "reviewer_role": {
+        "type": "string",
+        "description": "審核者角色，不保存非必要姓名。"
+      },
+      "source_title": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "證據來源名稱。"
+      },
+      "source_url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "證據來源網址。",
+        "format": "uri"
+      },
+      "record_status": {
+        "type": "string",
+        "description": "資料生命週期狀態。",
+        "enum": [
+          "draft",
+          "verified",
+          "derived",
+          "archived"
+        ]
+      },
+      "data_quality_flag": {
+        "type": "string",
+        "description": "資料品質或證據限制標記。",
+        "enum": [
+          "none",
+          "incomplete",
+          "low_evidence",
+          "synthetic_example"
+        ]
+      },
+      "is_example": {
+        "type": "boolean",
+        "description": "是否為教學或結構展示用範例資料。"
+      },
+      "created_at": {
+        "type": "string",
+        "description": "專案紀錄建立時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "updated_at": {
+        "type": "string",
+        "description": "專案紀錄最後更新時間，使用 UTC ISO 8601。",
+        "format": "date-time"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "此筆紀錄遵循的資料結構版本。"
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "補充說明、限制或資料處理註記。"
+      }
+    }
+  }
+}
