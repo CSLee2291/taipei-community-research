@@ -54,7 +54,7 @@ The consolidated CSV is used as the primary source because its published resourc
 3. Derive a short community label only by removing the fixed prefix `臺北市萬華區` and suffix `社區發展協會`; preserve the original name separately.
 4. Convert ROC dates in `YYYMMDD` form to Gregorian ISO 8601 dates by adding 1911 to the year.
 5. Parse coordinates as decimal numbers; empty coordinates remain null.
-6. Assign stable project identifiers in source order and preserve them for future releases.
+6. Assign stable project identifiers from the maintained name-to-ID mapping; additions or renames require manual review before regeneration.
 7. Treat blank source cells as unknown, never as zero or a negative finding.
 8. Do not infer operational status from dataset inclusion; use `unknown` unless another authoritative source explicitly states a status.
 9. Exclude chairperson names, direct telephone numbers, fax numbers, and email addresses from public derivatives under the project’s data-minimization policy.

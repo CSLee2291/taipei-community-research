@@ -18,3 +18,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - JSON Schema 2020-12 definition for consolidated community profiles.
 - Database relationship, identifier, provenance, integrity, and schema-evolution conventions.
 - Versioned Taipei City open-data source snapshot and Wanhua source-selection register.
+- Normalized Wanhua JSON database, overview report, data-quality report, and 31 association profiles.
