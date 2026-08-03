@@ -5,7 +5,8 @@ Interactive Traditional Chinese dashboard for the 31 Wanhua Community Developmen
 ## Features
 
 - summary metrics with explicit coverage and completeness definitions;
-- relative coordinate plot using government-published latitude and longitude;
+- Google Maps integration using government-published latitude and longitude;
+- synchronized map selection, association markers, place links, and public-transit directions;
 - establishment-decade distribution;
 - search, village, data-quality, and sorting controls;
 - association-level detail view with source provenance;
@@ -30,6 +31,10 @@ npm run dev
 ```
 
 Use `npm test` to run the deployment build and rendered-output checks.
+
+### Google Maps modes
+
+The dashboard works without credentials by showing the selected association in an embedded Google map and providing official Maps search and directions links. To show all filtered associations as interactive markers, enable the Maps JavaScript API and set `GOOGLE_MAPS_API_KEY` locally or in the Sites production environment. Restrict the browser key to the dashboard’s authorized HTTP referrers.
 
 ## Attribution
 

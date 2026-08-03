@@ -23,10 +23,11 @@ test("server-renders the Wanhua research dashboard", async () => {
 });
 
 test("ships validated research data and removes the starter preview", async () => {
-  const [dataText, page, component, packageJson] = await Promise.all([
+  const [dataText, page, component, mapComponent, packageJson] = await Promise.all([
     readFile(new URL("../app/data/wanhua-community-associations.json", import.meta.url), "utf8"),
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/WanhuaDashboard.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/GoogleCommunityMap.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
   const database = JSON.parse(dataText);
@@ -36,6 +37,10 @@ test("ships validated research data and removes the starter preview", async () =
   assert.match(page, /WanhuaDashboard/);
   assert.match(component, /aria-live="polite"/);
   assert.match(component, /data\/wanhua-community-associations\.json/);
+  assert.match(component, /GoogleCommunityMap/);
+  assert.match(mapComponent, /maps\.googleapis\.com\/maps\/api\/js/);
+  assert.match(mapComponent, /www\.google\.com\/maps\/search\/\?api=1/);
+  assert.match(mapComponent, /www\.google\.com\/maps\/dir\/\?api=1/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
   await access(new URL("../public/data/wanhua-community-associations.json", import.meta.url));

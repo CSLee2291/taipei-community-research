@@ -295,74 +295,141 @@ a {
   font-size: 11px;
 }
 
-.geo-plot {
+.google-map-block {
+  background: #e7e2d8;
+}
+
+.google-map-shell {
   position: relative;
   min-height: 430px;
   overflow: hidden;
   background-color: #e7e2d8;
+}
+
+.google-map-canvas,
+.google-map-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map-info-card {
+  position: absolute;
+  z-index: 3;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  width: min(330px, calc(100% - 36px));
+  padding: 16px 18px;
+  border: 1px solid rgb(24 38 32 / 0.22);
+  background: rgb(255 250 240 / 0.96);
+  box-shadow: 0 8px 24px rgb(24 38 32 / 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.map-provider {
+  margin-bottom: 6px;
+  color: var(--red);
+  font-family: monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.map-info-card strong {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.map-info-card small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 12px;
+}
+
+.map-actions a {
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.map-actions a:hover,
+.map-actions a:focus-visible {
+  color: var(--red);
+  text-decoration: underline;
+}
+
+.map-location-strip {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  scrollbar-color: var(--teal) transparent;
+}
+
+.map-location-strip button {
+  flex: 0 0 auto;
+  min-width: 112px;
+  padding: 9px 11px;
+  border: 1px solid rgb(24 38 32 / 0.16);
+  background: rgb(255 250 240 / 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.map-location-strip button:hover,
+.map-location-strip button:focus-visible,
+.map-location-strip button.is-selected {
+  outline: none;
+  border-color: var(--teal);
+  background: var(--teal);
+  color: var(--paper);
+}
+
+.map-location-strip span,
+.map-location-strip small {
+  display: block;
+  white-space: nowrap;
+}
+
+.map-location-strip span {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.map-location-strip small {
+  margin-top: 3px;
+  opacity: 0.72;
+  font-size: 9px;
+}
+
+.google-map-empty {
+  display: grid;
+  min-height: 430px;
+  place-items: center;
   background-image:
     linear-gradient(rgb(20 92 79 / 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgb(20 92 79 / 0.1) 1px, transparent 1px);
   background-size: 44px 44px;
-}
-
-.geo-plot::before {
-  position: absolute;
-  inset: 9% 8%;
-  border: 1px dashed rgb(20 92 79 / 0.35);
-  border-radius: 47% 36% 43% 38%;
-  content: "";
-}
-
-.geo-axis {
-  position: absolute;
-  z-index: 1;
-  color: rgb(24 38 32 / 0.55);
-  font-family: monospace;
-  font-size: 10px;
-}
-
-.geo-axis-north {
-  top: 16px;
-  left: 18px;
-}
-
-.geo-axis-east {
-  right: 18px;
-  bottom: 14px;
-}
-
-.map-point {
-  position: absolute;
-  z-index: 2;
-  width: 16px;
-  height: 16px;
-  padding: 0;
-  border: 3px solid var(--surface);
-  border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 1px 5px rgb(24 38 32 / 0.32);
-  cursor: pointer;
-  transform: translate(-50%, -50%);
-  transition: transform 150ms ease, background 150ms ease;
-}
-
-.map-point:hover,
-.map-point:focus-visible,
-.map-point.is-selected {
-  z-index: 4;
-  outline: none;
-  background: var(--red);
-  transform: translate(-50%, -50%) scale(1.45);
-}
-
-.map-empty {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .decade-panel {
@@ -743,8 +810,20 @@ a {
     text-align: left;
   }
 
-  .geo-plot {
+  .google-map-shell,
+  .google-map-empty {
     min-height: 340px;
+  }
+
+  .map-info-card {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    padding: 13px 14px;
+  }
+
+  .map-info-card strong {
+    font-size: 20px;
   }
 
   .directory-table th:nth-child(4),

@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { GoogleCommunityMap } from "./GoogleCommunityMap";
 
-type Community = {
+export type Community = {
   community_id: string;
   community_name_zh: string;
   association_name_zh: string;
@@ -63,7 +64,7 @@ function display(value: string | number | null | undefined) {
   return value === null || value === undefined || value === "" ? "未提供" : String(value);
 }
 
-export function WanhuaDashboard({ database }: { database: Database }) {
+export function WanhuaDashboard({ database, googleMapsApiKey = "" }: { database: Database; googleMapsApiKey?: string }) {
   const [query, setQuery] = useState("");
   const [village, setVillage] = useState("all");
   const [quality, setQuality] = useState("all");
@@ -92,14 +93,7 @@ export function WanhuaDashboard({ database }: { database: Database }) {
   }, [database.communities, query, quality, sort, village]);
 
   const selected = database.communities.find((community) => community.community_id === selectedId) ?? filtered[0] ?? database.communities[0];
-  const coordinateRecords = filtered.filter((community) => community.latitude !== null && community.longitude !== null);
-  const allCoordinateRecords = database.communities.filter((community) => community.latitude !== null && community.longitude !== null);
-  const latitudes = allCoordinateRecords.map((community) => community.latitude as number);
-  const longitudes = allCoordinateRecords.map((community) => community.longitude as number);
-  const minLatitude = Math.min(...latitudes);
-  const maxLatitude = Math.max(...latitudes);
-  const minLongitude = Math.min(...longitudes);
-  const maxLongitude = Math.max(...longitudes);
+  const coordinateRecords = filtered.filter((community): community is Community & { latitude: number; longitude: number } => community.latitude !== null && community.longitude !== null);
   const decadeEntries = Object.entries(database.quality_summary.establishment_decade_counts);
   const maxDecadeCount = Math.max(...decadeEntries.map(([, count]) => count));
 
@@ -152,17 +146,8 @@ export function WanhuaDashboard({ database }: { database: Database }) {
 
         <section className="analysis-grid" aria-label="空間與年代分析">
           <article className="panel">
-            <div className="panel-header"><h3>協會地址座標</h3><span>{coordinateRecords.length} / {filtered.length} 筆篩選結果可定位</span></div>
-            <div className="geo-plot" aria-label="萬華區協會地址相對座標圖">
-              <span className="geo-axis geo-axis-north">N 25.04°</span>
-              <span className="geo-axis geo-axis-east">E 121.51°</span>
-              {coordinateRecords.map((community) => {
-                const left = 8 + (((community.longitude as number) - minLongitude) / (maxLongitude - minLongitude)) * 84;
-                const top = 9 + ((maxLatitude - (community.latitude as number)) / (maxLatitude - minLatitude)) * 82;
-                return <button key={community.community_id} type="button" className={`map-point ${selected?.community_id === community.community_id ? "is-selected" : ""}`} style={{ left: `${left}%`, top: `${top}%` }} aria-label={`選取${community.community_name_zh}，${community.village_name_zh ?? "里別未提供"}`} title={`${community.community_name_zh} · ${community.village_name_zh ?? "里別未提供"}`} onClick={() => setSelectedId(community.community_id)} />;
-              })}
-              {!coordinateRecords.length && <div className="map-empty">目前篩選結果沒有可用座標</div>}
-            </div>
+            <div className="panel-header"><h3>Google 地圖協會點位</h3><span>{coordinateRecords.length} / {filtered.length} 筆篩選結果可定位</span></div>
+            <GoogleCommunityMap apiKey={googleMapsApiKey} communities={coordinateRecords} selectedId={selected?.community_id ?? ""} onSelect={setSelectedId} />
           </article>
 
           <article className="panel decade-panel">
