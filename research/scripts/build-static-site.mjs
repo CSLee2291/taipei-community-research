@@ -42,7 +42,7 @@ const html = `<!doctype html>
       <article><strong>${database.quality_summary.complete_core_records}</strong><span>核心欄位完整</span></article>
       <article><strong>${database.quality_summary.unique_address_villages}</strong><span>地址涵蓋里別</span></article>
     </section>
-    <section><h2>SDG 候選審查</h2><p>以下數字是依核定方案名稱與活動類型產生的低信心候選，不是正式 SDG 涵蓋、成果或排名；目前人工覆核與正式映射均為 0。</p>
+    <section><h2>SDG 候選審查</h2><p>${escapeHtml(sdgCandidates.interpretation_note_zh)}</p>
       <div class="metrics" aria-label="SDG 候選分布">
         <article><strong>${sdgCandidates.by_goal["3"]}</strong><span>SDG 3 候選</span></article>
         <article><strong>${sdgCandidates.by_goal["4"]}</strong><span>SDG 4 候選</span></article>

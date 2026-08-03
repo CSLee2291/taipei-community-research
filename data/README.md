@@ -14,12 +14,13 @@
 
 六組應用資料集是 `CommunityProfile`、`CommunityActivities`、`CommunityAwards`、`CommunitySDGs`、`CommunityFunding` 與 `CommunityAIRanking`。機器可讀契約位於 `schema/*.schema.json`，人工可讀定義位於 `docs/data-dictionary.md`。
 
-`CommunityProfile` 與 `CommunityActivities` 已發布正式來源紀錄；活動層的統計單位是官方核定方案，不是完成場次。`CommunitySDGs` 是由正式活動衍生、全部待人工覆核的低信心候選，正式映射數仍為 0。`is_example=true` 或 `data_quality_flag=synthetic_example` 的紀錄只用於展示資料模型，必須排除於研究結論、Dashboard 正式統計與公開排名。
+`CommunityProfile` 與 `CommunityActivities` 已發布正式來源紀錄；活動層的統計單位是官方核定方案，不是完成場次。`CommunitySDGs` 由可重製候選與 `research/reviews/CommunitySDGReviews.csv` 合併產生；目前 50 筆審查決策均為 `pending`，正式映射數仍為 0。`is_example=true` 或 `data_quality_flag=synthetic_example` 的紀錄只用於展示資料模型，必須排除於研究結論、Dashboard 正式統計與公開排名。
 
 ```bash
 node research/scripts/validate-data-layer.mjs
 node research/scripts/build-community-activities.mjs
 node research/scripts/build-community-sdg-candidates.mjs
+node research/scripts/merge-community-sdg-reviews.mjs
 ```
 
 ## 資料集要求

@@ -147,6 +147,23 @@
 - 沒有活動成果證據時，`indicator_name_zh`、`observed_value` 與 `observed_unit` 保持空值。
 - 只有人工覆核後才可使用 `human_review` 或 `mixed`，並需記錄覆核角色、日期與理由。
 
+### CommunitySDGReviews 人工審查台帳
+
+人工審查台帳位於 `research/reviews/CommunitySDGReviews.csv`，契約為 `data/schema/CommunitySDGReviews.schema.json`。Markdown 覆核清單與 `CommunitySDGs` CSV／JSON 都是衍生輸出，不得取代此台帳。
+
+| 欄位群組 | 說明 |
+| --- | --- |
+| `community_sdg_id`、`activity_id` | 連結候選與活動的穩定識別碼；每筆候選恰有一列。 |
+| `review_decision` | `pending`、`accept`、`modify`、`reject`、`defer`。 |
+| `reviewed_sdg_*`、`reviewed_alignment_type` | 接受或修改後的對應；其他決策留空。 |
+| `reviewed_confidence_score` | 人工審查後信心值；只能由理由與證據支持。 |
+| `evidence_*` | 審查採用的最高證據層級、標題與 URL；正式映射需 A 或 B 級。 |
+| `review_rationale_zh`、`reviewer_role`、`reviewed_on` | 決策理由、去識別角色與日期。 |
+| `second_review_*` | 高影響或爭議映射的第二階段抽查狀態、角色與日期。 |
+| `notes`、`schema_version` | 限制、衝突、TODO 與台帳 schema 版本。 |
+
+`pending` 不得填寫人工欄位；`accept` 必須維持候選對應；`modify` 必須改變 goal、target 或 alignment；`reject` 與 `defer` 不得填寫審查後對應。合併腳本不得修改人工台帳。
+
 ## CommunityFunding
 
 每列代表一項申請、核定或執行中的資金紀錄。

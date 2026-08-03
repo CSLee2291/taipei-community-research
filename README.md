@@ -54,11 +54,12 @@
 
 ```bash
 node research/scripts/check-markdown-links.mjs
+node research/scripts/build-community-activities.mjs
+node research/scripts/build-community-sdg-candidates.mjs
+node research/scripts/merge-community-sdg-reviews.mjs
 node research/scripts/validate-data-layer.mjs
 node research/scripts/export-data-layer-json.mjs --check
 node research/scripts/build-wanhua-database.mjs
-node research/scripts/build-community-activities.mjs
-node research/scripts/build-community-sdg-candidates.mjs
 node research/scripts/build-static-site.mjs
 
 cd dashboard

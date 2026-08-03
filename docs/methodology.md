@@ -77,8 +77,10 @@
 2. Sprint 3 第一階段只依活動受控類型與核定名稱產生一筆主要候選，規則版本化於 `research/mappings/activity-type-to-sdg-candidates.json`。
 3. 所有未覆核候選保持 `record_status=draft`、`assessment_method=rule_based`、`reviewer_role=ai_assisted_candidate`，信心值不得高於 0.5。
 4. 核定表沒有成果證據，因此成果指標、觀測值與單位保持空值；候選數不得稱為正式 SDG 涵蓋或成效。
-5. 正式發布前需由研究者逐筆接受、修改或拒絕候選並記錄理由，第二位研究者抽查高影響或爭議映射。
-6. 人工覆核完成後才可改為 `human_review` 或 `mixed`，並依實際證據調整信心、指標與資料狀態。
+5. 正式發布前需由研究者逐筆接受、修改、拒絕或暫緩候選並記錄理由；結構化決策保存於 `research/reviews/CommunitySDGReviews.csv`，產生器不得覆寫。
+6. `accept` 必須維持原候選 goal／target／alignment；`modify` 至少修改其中一項；兩者均需 A 或 B 級證據、來源、信心值、審查角色與日期。
+7. `reject` 保留為 `archived` 稽核紀錄；`defer` 維持 `draft`；高影響或爭議映射若標記等待第二階段抽查，在抽查完成前不得成為正式映射。
+8. 人工覆核 AI 候選後使用 `assessment_method=mixed`；只有不等待第二階段抽查的 `accept`／`modify` 可標記 `verified`。沒有活動成果證據時，指標與觀測值仍保持空值。
 
 ## 6. 範例資料政策
 

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateReview } from "./lib/sdg-review.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, "../..");
@@ -141,27 +142,125 @@ for (const record of loaded.CommunityActivities) {
   assert.equal(record.participant_count, null, `${record.activity_id}: planned beneficiaries cannot be published as actual participants`);
 }
 
-const sdgCandidatesByActivity = new Map();
-for (const record of loaded.CommunitySDGs) {
-  assert.equal(record.is_example, false, `${record.community_sdg_id}: SDG candidate cannot be synthetic`);
-  assert.equal(record.record_status, "draft", `${record.community_sdg_id}: unreviewed candidate must remain draft`);
-  assert.equal(record.data_quality_flag, "low_evidence", `${record.community_sdg_id}: candidate must disclose low evidence`);
-  assert.equal(record.assessment_method, "rule_based", `${record.community_sdg_id}: candidate must be rule based before human review`);
-  assert.equal(record.reviewer_role, "ai_assisted_candidate", `${record.community_sdg_id}: reviewer role must disclose AI assistance`);
-  assert(record.activity_id, `${record.community_sdg_id}: candidate requires an activity foreign key`);
-  assert(record.confidence_score > 0 && record.confidence_score <= 0.5, `${record.community_sdg_id}: unreviewed confidence must remain low`);
-  assert.equal(record.indicator_name_zh, null, `${record.community_sdg_id}: candidate cannot invent an outcome indicator`);
-  assert.equal(record.observed_value, null, `${record.community_sdg_id}: candidate cannot invent an observed result`);
-  assert.equal(record.observed_unit, null, `${record.community_sdg_id}: candidate cannot invent an observed unit`);
-  assert(record.notes?.includes("待人工覆核"), `${record.community_sdg_id}: missing human-review warning`);
-  const candidateCount = (sdgCandidatesByActivity.get(record.activity_id) ?? 0) + 1;
-  sdgCandidatesByActivity.set(record.activity_id, candidateCount);
+const [candidateText, reviewText, reviewSchemaText] = await Promise.all([
+  fs.readFile(path.join(repositoryRoot, "data/processed/wanhua-community-sdg-candidate-records.json"), "utf8"),
+  fs.readFile(path.join(repositoryRoot, "research/reviews/CommunitySDGReviews.csv"), "utf8"),
+  fs.readFile(path.join(repositoryRoot, "data/schema/CommunitySDGReviews.schema.json"), "utf8"),
+]);
+const candidatePublication = JSON.parse(candidateText);
+const candidates = candidatePublication.records;
+const candidateById = new Map(candidates.map((record) => [record.community_sdg_id, record]));
+const mergedById = new Map(loaded.CommunitySDGs.map((record) => [record.community_sdg_id, record]));
+assert.equal(candidatePublication.dataset, "WanhuaCommunitySDGCandidates", "SDG candidate publication name mismatch");
+assert.equal(candidatePublication.record_count, candidates.length, "SDG candidate record count mismatch");
+assert.equal(candidateById.size, candidates.length, "SDG candidate source contains duplicate IDs");
+
+for (const candidate of candidates) {
+  assert.equal(candidate.is_example, false, `${candidate.community_sdg_id}: SDG candidate cannot be synthetic`);
+  assert.equal(candidate.record_status, "draft", `${candidate.community_sdg_id}: unreviewed candidate must remain draft`);
+  assert.equal(candidate.data_quality_flag, "low_evidence", `${candidate.community_sdg_id}: candidate must disclose low evidence`);
+  assert.equal(candidate.assessment_method, "rule_based", `${candidate.community_sdg_id}: generated candidate must be rule based`);
+  assert.equal(candidate.reviewer_role, "ai_assisted_candidate", `${candidate.community_sdg_id}: candidate reviewer role must disclose AI assistance`);
+  assert(candidate.activity_id, `${candidate.community_sdg_id}: candidate requires an activity foreign key`);
+  assert(activityById.has(candidate.activity_id), `${candidate.community_sdg_id}: candidate activity is unresolved`);
+  assert(candidate.confidence_score > 0 && candidate.confidence_score <= 0.5, `${candidate.community_sdg_id}: unreviewed confidence must remain low`);
+  assert.equal(candidate.indicator_name_zh, null, `${candidate.community_sdg_id}: candidate cannot invent an outcome indicator`);
+  assert.equal(candidate.observed_value, null, `${candidate.community_sdg_id}: candidate cannot invent an observed result`);
+  assert.equal(candidate.observed_unit, null, `${candidate.community_sdg_id}: candidate cannot invent an observed unit`);
+  assert(candidate.notes?.includes("待人工覆核"), `${candidate.community_sdg_id}: candidate is missing human-review warning`);
 }
-assert.equal(sdgCandidatesByActivity.size, loaded.CommunityActivities.length, "CommunitySDGs: every activity requires one primary candidate");
-assert([...sdgCandidatesByActivity.values()].every((count) => count === 1), "CommunitySDGs: primary candidate must be unique per activity");
+
+const reviewSchema = JSON.parse(reviewSchemaText);
+const reviewFields = Object.keys(reviewSchema.items.properties);
+const [reviewHeader, ...reviewRows] = parseCsv(reviewText);
+assert.deepEqual(reviewHeader, reviewFields, "CommunitySDGReviews: CSV header does not match schema");
+assert(reviewRows.every((row) => row.length === reviewFields.length), "CommunitySDGReviews: row width differs from header");
+const reviews = reviewRows.map((row, rowIndex) => Object.fromEntries(reviewFields.map((field, columnIndex) => {
+  const property = reviewSchema.items.properties[field];
+  const rawValue = row[columnIndex];
+  let value = rawValue === "" ? null : rawValue;
+  const types = Array.isArray(property.type) ? property.type : [property.type];
+  if (value !== null && types.includes("integer")) value = Number(value);
+  if (value !== null && types.includes("number")) value = Number(value);
+  validateType(value, property, `CommunitySDGReviews row ${rowIndex + 2}.${field}`);
+  return [field, value];
+})));
+for (const [index, review] of reviews.entries()) {
+  for (const requiredField of reviewSchema.items.required) assert(review[requiredField] !== null && review[requiredField] !== "", `CommunitySDGReviews row ${index + 2}: required field ${requiredField} is empty`);
+  assert.equal(review.schema_version, reviewSchema.items.properties.schema_version.const, `CommunitySDGReviews row ${index + 2}: unsupported schema_version`);
+}
+const reviewById = new Map(reviews.map((review) => [review.community_sdg_id, review]));
+assert.equal(reviewById.size, reviews.length, "CommunitySDGReviews: duplicate community_sdg_id");
+assert.equal(reviews.length, candidates.length, "CommunitySDGReviews: exactly one row per candidate is required");
+assert.equal(mergedById.size, candidates.length, "CommunitySDGs: merged publication must retain one audit record per candidate");
+
+for (const review of reviews) {
+  const candidate = candidateById.get(review.community_sdg_id);
+  const merged = mergedById.get(review.community_sdg_id);
+  assert(candidate, `${review.community_sdg_id}: review references an unknown candidate`);
+  assert(merged, `${review.community_sdg_id}: merged publication record is missing`);
+  validateReview(review, candidate);
+  assert.equal(review.activity_id, candidate.activity_id, `${review.community_sdg_id}: review activity differs from candidate`);
+  assert.equal(merged.activity_id, candidate.activity_id, `${review.community_sdg_id}: merged activity differs from candidate`);
+  assert.equal(merged.community_id, candidate.community_id, `${review.community_sdg_id}: merged community differs from candidate`);
+  assert.equal(merged.is_example, false, `${review.community_sdg_id}: merged SDG record cannot be synthetic`);
+  assert.equal(merged.indicator_name_zh, null, `${review.community_sdg_id}: no reviewed outcome indicator has been supplied`);
+  assert.equal(merged.observed_value, null, `${review.community_sdg_id}: no reviewed observed value has been supplied`);
+  assert.equal(merged.observed_unit, null, `${review.community_sdg_id}: no reviewed observed unit has been supplied`);
+
+  if (review.review_decision === "pending") {
+    assert.deepEqual(merged, candidate, `${review.community_sdg_id}: pending review must not alter candidate publication`);
+    assert.equal(review.second_review_status, "not_assessed", `${review.community_sdg_id}: pending first review cannot assess second review`);
+    for (const field of reviewFields.slice(3, -1)) {
+      if (field !== "second_review_status") assert.equal(review[field], null, `${review.community_sdg_id}: pending review must leave ${field} empty`);
+    }
+    continue;
+  }
+
+  assert(review.review_rationale_zh && review.reviewer_role && review.reviewed_on, `${review.community_sdg_id}: reviewed decision requires rationale, role and date`);
+  assert.notEqual(review.second_review_status, "not_assessed", `${review.community_sdg_id}: reviewed decision must assess second-review need`);
+  assert.equal(merged.assessment_method, "mixed", `${review.community_sdg_id}: reviewed AI candidate must use mixed assessment`);
+  assert.equal(merged.reviewer_role, review.reviewer_role, `${review.community_sdg_id}: merged reviewer role differs from ledger`);
+  assert.equal(merged.assessed_on, review.reviewed_on, `${review.community_sdg_id}: merged review date differs from ledger`);
+
+  if (review.second_review_status === "completed") {
+    assert(review.second_reviewer_role && review.second_reviewed_on, `${review.community_sdg_id}: completed second review requires role and date`);
+  } else {
+    assert.equal(review.second_reviewer_role, null, `${review.community_sdg_id}: second reviewer role requires completed status`);
+    assert.equal(review.second_reviewed_on, null, `${review.community_sdg_id}: second review date requires completed status`);
+  }
+
+  if (["accept", "modify"].includes(review.review_decision)) {
+    assert(Number.isInteger(review.reviewed_sdg_goal) && review.reviewed_sdg_goal >= 1 && review.reviewed_sdg_goal <= 17, `${review.community_sdg_id}: reviewed goal must be 1–17`);
+    assert(review.reviewed_sdg_target?.startsWith(`${review.reviewed_sdg_goal}.`), `${review.community_sdg_id}: reviewed target must belong to reviewed goal`);
+    assert(["direct", "indirect", "enabling"].includes(review.reviewed_alignment_type), `${review.community_sdg_id}: reviewed alignment is invalid`);
+    assert(review.reviewed_confidence_score > 0 && review.reviewed_confidence_score <= 1, `${review.community_sdg_id}: reviewed confidence is invalid`);
+    assert(["A", "B"].includes(review.evidence_level), `${review.community_sdg_id}: formal mapping requires A or B evidence`);
+    assert(review.evidence_title && review.evidence_url, `${review.community_sdg_id}: formal mapping requires evidence title and URL`);
+    const unchanged = review.reviewed_sdg_goal === candidate.sdg_goal && review.reviewed_sdg_target === candidate.sdg_target && review.reviewed_alignment_type === candidate.alignment_type;
+    assert.equal(unchanged, review.review_decision === "accept", `${review.community_sdg_id}: accept/modify semantics are inconsistent`);
+    assert.equal(merged.sdg_goal, review.reviewed_sdg_goal, `${review.community_sdg_id}: merged goal differs from review`);
+    assert.equal(merged.sdg_target, review.reviewed_sdg_target, `${review.community_sdg_id}: merged target differs from review`);
+    assert.equal(merged.alignment_type, review.reviewed_alignment_type, `${review.community_sdg_id}: merged alignment differs from review`);
+    assert.equal(merged.confidence_score, review.reviewed_confidence_score, `${review.community_sdg_id}: merged confidence differs from review`);
+    assert.equal(merged.record_status, review.second_review_status === "pending" ? "draft" : "verified", `${review.community_sdg_id}: formal status differs from second-review state`);
+  } else if (review.review_decision === "reject") {
+    assert.equal(merged.record_status, review.second_review_status === "pending" ? "draft" : "archived", `${review.community_sdg_id}: rejected candidate status differs from second-review state`);
+    assert(merged.notes?.includes("人工覆核拒絕"), `${review.community_sdg_id}: rejected candidate must retain audit reason`);
+  } else {
+    assert.equal(review.review_decision, "defer", `${review.community_sdg_id}: unsupported review decision`);
+    assert.equal(merged.record_status, "draft", `${review.community_sdg_id}: deferred candidate must remain draft`);
+    assert(merged.notes?.includes("人工覆核暫緩"), `${review.community_sdg_id}: deferred candidate must retain audit reason`);
+  }
+}
+
+const candidateCountsByActivity = new Map();
+for (const candidate of candidates) candidateCountsByActivity.set(candidate.activity_id, (candidateCountsByActivity.get(candidate.activity_id) ?? 0) + 1);
+assert.equal(candidateCountsByActivity.size, loaded.CommunityActivities.length, "CommunitySDGs: every activity requires one primary candidate");
+assert([...candidateCountsByActivity.values()].every((count) => count === 1), "CommunitySDGs: primary candidate must be unique per activity");
 
 console.log(JSON.stringify({
   status: "passed",
   datasets: Object.fromEntries(datasetNames.map((name) => [name, loaded[name].length])),
-  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "unique_keys", "ranking_formula", "synthetic_example_guard", "formal_activity_evidence_guard", "sdg_candidate_review_guard"],
+  checks: ["schema", "required_fields", "types", "csv_json_parity", "foreign_keys", "unique_keys", "ranking_formula", "synthetic_example_guard", "formal_activity_evidence_guard", "sdg_candidate_review_guard", "sdg_review_ledger", "sdg_review_merge_guard"],
 }, null, 2));

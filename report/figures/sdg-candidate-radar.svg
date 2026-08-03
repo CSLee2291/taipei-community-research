@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="title desc">
   <title id="title">萬華社區 SDG 候選對應雷達圖</title>
-  <desc id="desc">呈現 SDG 3、4、10、11 的候選紀錄數；所有紀錄均待人工覆核。</desc>
+  <desc id="desc">呈現 SDG 3、4、10、11 的候選紀錄數；人工已審 0 筆，正式映射 0 筆。</desc>
   <rect width="640" height="560" fill="#f2eee6"/>
   <text x="32" y="40" font-size="24" font-weight="700" fill="#182620">SDG 候選分布</text>
   <text x="32" y="66" font-size="13" fill="#657069">正規化基準為候選數最高的目標；不是成效分數。</text>
@@ -8,5 +8,5 @@
   <polygon points="320.0,243.0 392.0,270.0 320.0,450.0 149.0,270.0" fill="#145c4f" fill-opacity="0.24" stroke="#145c4f" stroke-width="4"/>
   <circle cx="320.0" cy="243.0" r="6" fill="#b64e3b" stroke="#fffdf8" stroke-width="3"/><circle cx="392.0" cy="270.0" r="6" fill="#b64e3b" stroke="#fffdf8" stroke-width="3"/><circle cx="320.0" cy="450.0" r="6" fill="#b64e3b" stroke="#fffdf8" stroke-width="3"/><circle cx="149.0" cy="270.0" r="6" fill="#b64e3b" stroke="#fffdf8" stroke-width="3"/>
   <text x="320.0" y="52.0" text-anchor="middle" dominant-baseline="middle" font-size="18" font-weight="700" fill="#182620">SDG 3<tspan x="320.0" dy="22" font-size="13" font-weight="500" fill="#657069">3 筆候選</tspan></text><text x="538.0" y="270.0" text-anchor="middle" dominant-baseline="middle" font-size="18" font-weight="700" fill="#182620">SDG 4<tspan x="538.0" dy="22" font-size="13" font-weight="500" fill="#657069">8 筆候選</tspan></text><text x="320.0" y="488.0" text-anchor="middle" dominant-baseline="middle" font-size="18" font-weight="700" fill="#182620">SDG 10<tspan x="320.0" dy="22" font-size="13" font-weight="500" fill="#657069">20 筆候選</tspan></text><text x="102.0" y="270.0" text-anchor="middle" dominant-baseline="middle" font-size="18" font-weight="700" fill="#182620">SDG 11<tspan x="102.0" dy="22" font-size="13" font-weight="500" fill="#657069">19 筆候選</tspan></text>
-  <text x="320" y="538" text-anchor="middle" font-size="12" fill="#657069">候選資料 · human_reviewed = 0 · 不得解讀為正式涵蓋或績效</text>
+  <text x="320" y="538" text-anchor="middle" font-size="12" fill="#657069">人工已審 0 · 正式映射 0 · 候選數不得解讀為績效</text>
 </svg>

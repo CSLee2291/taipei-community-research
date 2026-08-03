@@ -52,6 +52,7 @@ test("ships validated research data and removes the starter preview", async () =
   assert.equal(sdgCandidates.pending_human_review_count, 50);
   assert.equal(sdgCandidates.human_reviewed_count, 0);
   assert.equal(sdgCandidates.formal_mapping_count, 0);
+  assert.deepEqual(sdgCandidates.decision_counts, { pending: 50, accept: 0, modify: 0, reject: 0, defer: 0 });
   assert.deepEqual(sdgCandidates.by_goal, { 3: 3, 4: 8, 10: 20, 11: 19 });
   assert.match(page, /WanhuaDashboard/);
   assert.match(component, /aria-live="polite"/);

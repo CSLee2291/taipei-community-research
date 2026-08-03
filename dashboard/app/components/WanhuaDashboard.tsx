@@ -76,7 +76,7 @@ export type SDGCandidateStatistics = {
   schema_version: string;
   mapping_version: string;
   generated_at: string;
-  publication_status: "candidate_only";
+  publication_status: "candidate_only" | "partially_reviewed";
   candidate_count: number;
   activity_population: number;
   mapped_activity_count: number;
@@ -249,7 +249,7 @@ export function WanhuaDashboard({ database, activities, sdgCandidates, googleMap
 
         <div className="section-heading" id="sdg-candidates">
           <h2>SDG 候選審查</h2>
-          <p>由活動類型與核定名稱產生的低信心候選；全部等待研究者逐筆接受、修改或拒絕。</p>
+          <p>由活動類型與核定名稱產生候選，再與人工審查台帳合併；候選數不代表正式成果。</p>
         </div>
 
         <section className="sdg-overview" aria-labelledby="sdg-candidates">
