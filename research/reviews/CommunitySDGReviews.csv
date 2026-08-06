@@ -1,5 +1,5 @@
 community_sdg_id,activity_id,review_decision,reviewed_sdg_goal,reviewed_sdg_target,reviewed_alignment_type,reviewed_confidence_score,evidence_level,evidence_title,evidence_url,review_rationale_zh,reviewer_role,reviewed_on,second_review_status,second_reviewer_role,second_reviewed_on,notes,schema_version
-SDG-CAND-ACT-2023-0001,ACT-2023-0001,pending,,,,,,,,,,,not_assessed,,,,1.0.0
+SDG-CAND-ACT-2023-0001,ACT-2023-0001,accept,,,,,,,,,,,not_assessed,,,,1.0.0
 SDG-CAND-ACT-2023-0002,ACT-2023-0002,pending,,,,,,,,,,,not_assessed,,,,1.0.0
 SDG-CAND-ACT-2023-0003,ACT-2023-0003,pending,,,,,,,,,,,not_assessed,,,,1.0.0
 SDG-CAND-ACT-2023-0004,ACT-2023-0004,pending,,,,,,,,,,,not_assessed,,,,1.0.0
