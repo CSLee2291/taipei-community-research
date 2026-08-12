@@ -20,6 +20,8 @@
 - Sprint 1 萬華區 33 筆 `CommunityProfile` CSV／JSON、協會清冊、處理後 JSON、研究總覽、資料品質報告與個別協會檔案。
 - Sprint 2 萬華區 2023–2026 活動資料：50 筆臺北市社會局核定方案、CSV／JSON、來源轉錄與來源登錄。
 - 活動年度／類型統計、33 協會來源覆蓋矩陣、協會官網／Facebook TODO 清單與 Dashboard 活動資料。
+- Sprint 3 的 50 筆逐活動 SDG 低信心候選、版本化規則、框架來源、人工覆核佇列、候選涵蓋分析與雷達圖。
+- SDG 人工審查台帳與 schema、候選／審查合併腳本、第二階段抽查狀態及五種決策的隔離測試。
 - 萬華互動式研究 Dashboard，包含篩選、座標、時間分布、資料詳情與 JSON 下載。
 - Google Maps 同步選取、多點標記、位置與大眾運輸路線整合。
 - CSV、JSON、JSON Schema、原始資料規範、六工作表檢閱檔、研究方法、評分模型與資料字典。
@@ -31,6 +33,7 @@
 - 地址在兩個官方來源間不一致時，不沿用全市資料的舊址座標；缺值與待定位項目改以 TODO 揭露。
 - `CommunityActivities` schema 升至 1.1.0，擴充志工、生態、防災、數位、青年與食物等活動類型；正式活動排除合成示例。
 - 核定表的預計受益人數只保留於來源註記，不寫入實際 `participant_count`，並明示核定不等於完成。
+- `CommunitySDGs` 改由獨立候選來源與人工審查台帳合併產生；目前全部保持 draft、rule_based、low_evidence，正式 SDG 映射數維持 0。
 - 清除獎項、SDG 與補助教學示例中指向已移除活動示例的可選外鍵，維持資料層參照完整性。
 - 研究資料完整同步、匯出、Dashboard 與報告更新改為使用者手動觸發，不設定每日資料排程。
 - 修正 Dashboard Sites Vite plugin 被 `.gitignore` 排除、導致乾淨 GitHub Actions runner 無法建置的問題。

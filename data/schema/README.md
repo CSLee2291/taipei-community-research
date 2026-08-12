@@ -4,7 +4,7 @@
 
 狀態：使用中的研究資料層
 
-本目錄定義臺北社區研究的正規化交換 schema。原有 CSV 是只有欄名的正規化模板；六個 `*.schema.json` 定義 `data/csv/` 與 `data/json/` 應用發布層的契約。`CommunityProfile.json` 則保留為整合 Profile API schema。
+本目錄定義臺北社區研究的正規化交換 schema。原有 CSV 是只有欄名的正規化模板；六個應用資料 `*.schema.json` 定義 `data/csv/` 與 `data/json/` 發布契約，另有一個人工 SDG 審查契約。`CommunityProfile.json` 則保留為整合 Profile API schema。
 
 ## 應用資料層
 
@@ -13,7 +13,8 @@
 | `CommunityProfile.schema.json` | `CommunityProfile` | 具來源的社區身分與 provenance |
 | `CommunityActivities.schema.json` | `CommunityActivities` | 計畫、服務與活動 |
 | `CommunityAwards.schema.json` | `CommunityAwards` | 具證據的獎項與肯定 |
-| `CommunitySDGs.schema.json` | `CommunitySDGs` | 可覆核的 SDG 對應評估 |
+| `CommunitySDGs.schema.json` | `CommunitySDGs` | 候選與人工決策合併後的 SDG 對應評估 |
+| `CommunitySDGReviews.schema.json` | `research/reviews/CommunitySDGReviews.csv` | 人工審查決策與第二階段抽查契約 |
 | `CommunityFunding.schema.json` | `CommunityFunding` | 補助申請、核定與支出 |
 | `CommunityAIRanking.schema.json` | `CommunityAIRanking` | 版本化、可解釋的評估輸出 |
 

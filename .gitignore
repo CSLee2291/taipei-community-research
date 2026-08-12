@@ -70,6 +70,8 @@ data/processed/*
 !data/processed/.gitkeep
 !data/processed/wanhua-community-associations.json
 !data/processed/wanhua-community-activity-statistics.json
+!data/processed/wanhua-community-sdg-candidate-statistics.json
+!data/processed/wanhua-community-sdg-candidate-records.json
 !data/processed/README.md
 !data/processed/data-layer-examples.xlsx
 

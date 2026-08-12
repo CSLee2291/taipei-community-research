@@ -71,6 +71,17 @@
 
 來源之間衝突時不直接選擇較新或較完整者，而是保留衝突、記錄判定理由並降低資料品質或信心標記。
 
+### 5.1 SDG 候選對應規則
+
+1. SDG 對應單位是活動，不以協會名稱、補助金額或網路聲量直接映射。
+2. Sprint 3 第一階段只依活動受控類型與核定名稱產生一筆主要候選，規則版本化於 `research/mappings/activity-type-to-sdg-candidates.json`。
+3. 所有未覆核候選保持 `record_status=draft`、`assessment_method=rule_based`、`reviewer_role=ai_assisted_candidate`，信心值不得高於 0.5。
+4. 核定表沒有成果證據，因此成果指標、觀測值與單位保持空值；候選數不得稱為正式 SDG 涵蓋或成效。
+5. 正式發布前需由研究者逐筆接受、修改、拒絕或暫緩候選並記錄理由；結構化決策保存於 `research/reviews/CommunitySDGReviews.csv`，產生器不得覆寫。
+6. `accept` 必須維持原候選 goal／target／alignment；`modify` 至少修改其中一項；兩者均需 A 或 B 級證據、來源、信心值、審查角色與日期。
+7. `reject` 保留為 `archived` 稽核紀錄；`defer` 維持 `draft`；高影響或爭議映射若標記等待第二階段抽查，在抽查完成前不得成為正式映射。
+8. 人工覆核 AI 候選後使用 `assessment_method=mixed`；只有不等待第二階段抽查的 `accept`／`modify` 可標記 `verified`。沒有活動成果證據時，指標與觀測值仍保持空值。
+
 ## 6. 範例資料政策
 
 本資料層需要範例資料以測試欄位、關聯、排序與介面。為避免合成資料被誤認為事實：
@@ -81,7 +92,7 @@
 - 內容與備註明示「教學示例」或「非真實」；
 - 正式研究、圖表、排名及對外報告必須排除所有示例紀錄。
 
-`CommunityProfile` 的 33 筆資料與 `CommunityActivities` 的 2023–2026 核定方案均標記為 `is_example=false`。獎項、SDG、資金與排名資料目前仍為合成示例，不得與正式 Profile 或活動資料混為同一證據層級。
+`CommunityProfile` 的 33 筆資料、`CommunityActivities` 的 2023–2026 核定方案及 `CommunitySDGs` 的待覆核候選均標記為 `is_example=false`。SDG 候選不是合成資料，但仍是低證據、未覆核的衍生建議，不得進入正式結論。獎項、資金與排名資料目前仍為合成示例。
 
 ## 7. 品質保證
 

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CSLee2291/taipei-community-research/blob/main/data/schema/CommunitySDGReviews.schema.json",
+  "title": "CommunitySDGReviews",
+  "description": "每列保存一筆 SDG 候選的人工審查決策；本資料是人工維護的稽核來源，不由建置腳本覆寫。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "community_sdg_id",
+      "activity_id",
+      "review_decision",
+      "second_review_status",
+      "schema_version"
+    ],
+    "properties": {
+      "community_sdg_id": {
+        "type": "string",
+        "description": "受審 SDG 候選穩定識別碼。"
+      },
+      "activity_id": {
+        "type": "string",
+        "description": "候選所屬活動識別碼。"
+      },
+      "review_decision": {
+        "type": "string",
+        "description": "第一位研究者的審查決策。",
+        "enum": ["pending", "accept", "modify", "reject", "defer"]
+      },
+      "reviewed_sdg_goal": {
+        "type": ["integer", "null"],
+        "description": "接受或修改後的 SDG 目標編號；未決或拒絕時留空。"
+      },
+      "reviewed_sdg_target": {
+        "type": ["string", "null"],
+        "description": "接受或修改後的 SDG 細項代碼；未決或拒絕時留空。"
+      },
+      "reviewed_alignment_type": {
+        "type": ["string", "null"],
+        "description": "接受或修改後的貢獻類型。",
+        "enum": ["direct", "indirect", "enabling", null]
+      },
+      "reviewed_confidence_score": {
+        "type": ["number", "null"],
+        "description": "人工審查後的對應信心值 0–1；必須由理由與證據支持。"
+      },
+      "evidence_level": {
+        "type": ["string", "null"],
+        "description": "人工審查採用的最高證據層級。",
+        "enum": ["A", "B", "C", "D", null]
+      },
+      "evidence_title": {
+        "type": ["string", "null"],
+        "description": "人工審查實際使用的證據標題。"
+      },
+      "evidence_url": {
+        "type": ["string", "null"],
+        "description": "人工審查實際使用的證據網址。",
+        "format": "uri"
+      },
+      "review_rationale_zh": {
+        "type": ["string", "null"],
+        "description": "接受、修改、拒絕或暫緩的繁體中文理由。"
+      },
+      "reviewer_role": {
+        "type": ["string", "null"],
+        "description": "第一位審查者角色或匿名研究者代碼；公開資料不保存非必要姓名。"
+      },
+      "reviewed_on": {
+        "type": ["string", "null"],
+        "description": "第一階段審查日期。",
+        "format": "date"
+      },
+      "second_review_status": {
+        "type": "string",
+        "description": "第二位研究者抽查狀態。",
+        "enum": ["not_assessed", "not_required", "pending", "completed"]
+      },
+      "second_reviewer_role": {
+        "type": ["string", "null"],
+        "description": "第二位審查者角色或匿名研究者代碼。"
+      },
+      "second_reviewed_on": {
+        "type": ["string", "null"],
+        "description": "第二階段抽查日期。",
+        "format": "date"
+      },
+      "notes": {
+        "type": ["string", "null"],
+        "description": "證據限制、來源衝突、第二審意見或後續 TODO。"
+      },
+      "schema_version": {
+        "type": "string",
+        "description": "人工審查資料結構版本。",
+        "const": "1.0.0"
+      }
+    }
+  }
+}

@@ -72,6 +72,24 @@ export type ActivityStatistics = {
   interpretation_note_zh: string;
 };
 
+export type SDGCandidateStatistics = {
+  schema_version: string;
+  mapping_version: string;
+  generated_at: string;
+  publication_status: "candidate_only" | "partially_reviewed";
+  candidate_count: number;
+  activity_population: number;
+  mapped_activity_count: number;
+  mapped_community_count: number;
+  association_population: number;
+  pending_human_review_count: number;
+  human_reviewed_count: number;
+  formal_mapping_count: number;
+  by_goal: Record<string, number>;
+  by_year_goal: Record<string, Record<string, number>>;
+  interpretation_note_zh: string;
+};
+
 const activityTypeLabels: Record<string, string> = {
   health_promotion: "健康促進",
   education: "教育與學習",
@@ -93,7 +111,35 @@ function display(value: string | number | null | undefined) {
   return value === null || value === undefined || value === "" ? "未提供" : String(value);
 }
 
-export function WanhuaDashboard({ database, activities, googleMapsApiKey = "" }: { database: Database; activities: ActivityStatistics; googleMapsApiKey?: string }) {
+function radarPoint(index: number, count: number, radius: number) {
+  const angle = (-Math.PI / 2) + (index * Math.PI * 2) / count;
+  return [150 + Math.cos(angle) * radius, 150 + Math.sin(angle) * radius];
+}
+
+function SDGCandidateRadar({ byGoal }: { byGoal: Record<string, number> }) {
+  const entries = Object.entries(byGoal);
+  const max = Math.max(...entries.map(([, count]) => count), 1);
+  const dataPoints = entries.map(([, count], index) => radarPoint(index, entries.length, 105 * (count / max)));
+  return (
+    <svg className="sdg-radar" viewBox="0 0 300 300" role="img" aria-labelledby="sdg-radar-title sdg-radar-desc">
+      <title id="sdg-radar-title">SDG 候選分布雷達圖</title>
+      <desc id="sdg-radar-desc">依候選紀錄數顯示 SDG 3、4、10、11；不是成效分數。</desc>
+      {[0.25, 0.5, 0.75, 1].map((level) => <polygon key={level} className="sdg-radar-grid" points={entries.map((_, index) => radarPoint(index, entries.length, 105 * level).join(",")).join(" ")} />)}
+      {entries.map((_, index) => {
+        const [x, y] = radarPoint(index, entries.length, 105);
+        return <line key={index} className="sdg-radar-axis" x1="150" y1="150" x2={x} y2={y} />;
+      })}
+      <polygon className="sdg-radar-data" points={dataPoints.map((point) => point.join(",")).join(" ")} />
+      {dataPoints.map(([x, y], index) => <circle key={entries[index][0]} className="sdg-radar-dot" cx={x} cy={y} r="5" />)}
+      {entries.map(([goal, count], index) => {
+        const [x, y] = radarPoint(index, entries.length, 130);
+        return <text key={goal} x={x} y={y} textAnchor="middle" dominantBaseline="middle"><tspan x={x}>SDG {goal}</tspan><tspan className="sdg-radar-count" x={x} dy="16">{count} 筆</tspan></text>;
+      })}
+    </svg>
+  );
+}
+
+export function WanhuaDashboard({ database, activities, sdgCandidates, googleMapsApiKey = "" }: { database: Database; activities: ActivityStatistics; sdgCandidates: SDGCandidateStatistics; googleMapsApiKey?: string }) {
   const [query, setQuery] = useState("");
   const [village, setVillage] = useState("all");
   const [quality, setQuality] = useState("all");
@@ -129,6 +175,7 @@ export function WanhuaDashboard({ database, activities, googleMapsApiKey = "" }:
   const activityTypeEntries = Object.entries(activities.by_type).filter(([, count]) => count > 0);
   const maxActivityYearCount = Math.max(...activityYearEntries.map(([, count]) => count));
   const maxActivityTypeCount = Math.max(...activityTypeEntries.map(([, count]) => count));
+  const sdgGoalEntries = Object.entries(sdgCandidates.by_goal);
 
   const resetFilters = () => {
     setQuery("");
@@ -200,6 +247,33 @@ export function WanhuaDashboard({ database, activities, googleMapsApiKey = "" }:
           <p className="activity-boundary">{activities.interpretation_note_zh}　<a href="/data/wanhua-community-activities.json" download>下載活動統計 JSON</a></p>
         </section>
 
+        <div className="section-heading" id="sdg-candidates">
+          <h2>SDG 候選審查</h2>
+          <p>由活動類型與核定名稱產生候選，再與人工審查台帳合併；候選數不代表正式成果。</p>
+        </div>
+
+        <section className="sdg-overview" aria-labelledby="sdg-candidates">
+          <div className="sdg-stat-strip">
+            <article><span>活動候選覆蓋</span><strong>{sdgCandidates.mapped_activity_count}<small> / {sdgCandidates.activity_population}</small></strong></article>
+            <article><span>待人工覆核</span><strong>{sdgCandidates.pending_human_review_count}</strong></article>
+            <article><span>正式映射</span><strong>{sdgCandidates.formal_mapping_count}</strong></article>
+          </div>
+          <div className="sdg-grid">
+            <article className="panel sdg-radar-panel">
+              <div className="panel-header"><h3>候選分布雷達圖</h3><span>非成效分數</span></div>
+              <SDGCandidateRadar byGoal={sdgCandidates.by_goal} />
+            </article>
+            <article className="panel sdg-goal-panel">
+              <div className="panel-header"><h3>候選工作量</h3><span>human reviewed = {sdgCandidates.human_reviewed_count}</span></div>
+              <div className="sdg-goal-list">
+                {sdgGoalEntries.map(([goal, count]) => <div key={goal}><strong>SDG {goal}</strong><span>{count} 筆候選</span></div>)}
+              </div>
+              <p>{sdgCandidates.interpretation_note_zh}</p>
+              <a className="sdg-download" href="/data/wanhua-community-sdg-candidates.json" download>下載候選統計 JSON</a>
+            </article>
+          </div>
+        </section>
+
         <div className="section-heading">
           <h2>空間與時間</h2>
           <p>點位沿用政府資料座標；年代分布只計算有成立日期的 28 筆紀錄。</p>
@@ -267,7 +341,7 @@ export function WanhuaDashboard({ database, activities, googleMapsApiKey = "" }:
 
       <footer className="site-footer">
         <div><strong>萬華社區研究</strong>萬華區公所與臺北市政府社會局 2026 官方資料衍生研究 · 存取日 {database.generated_on}</div>
-        <div className="footer-links"><a href="/data/wanhua-community-associations.json" download>協會 JSON</a><a href="/data/wanhua-community-activities.json" download>活動統計 JSON</a><a href={database.attribution.license_url} target="_blank" rel="noreferrer">授權條款</a></div>
+        <div className="footer-links"><a href="/data/wanhua-community-associations.json" download>協會 JSON</a><a href="/data/wanhua-community-activities.json" download>活動統計 JSON</a><a href="/data/wanhua-community-sdg-candidates.json" download>SDG 候選 JSON</a><a href={database.attribution.license_url} target="_blank" rel="noreferrer">授權條款</a></div>
       </footer>
     </div>
   );

@@ -126,10 +126,10 @@
 | `indicator_name_zh` | string | 否 | 使用的成果指標名稱。 | — |
 | `observed_value` | number | 否 | 觀測值。 | — |
 | `observed_unit` | string | 否 | 觀測值單位。 | — |
-| `confidence_score` | number | 是 | 對應信心水準，0–1。 | — |
+| `confidence_score` | number | 是 | 對應信心水準，0–1；未人工覆核候選不得高於 0.5。 | — |
 | `assessment_method` | string | 是 | 評估方式。 | `rule_based`、`human_review`、`mixed` |
 | `assessed_on` | date | 是 | 評估日期。 | `YYYY-MM-DD` |
-| `reviewer_role` | string | 是 | 審核者角色，不保存非必要姓名。 | — |
+| `reviewer_role` | string | 是 | 審核者角色；AI 輔助候選使用 `ai_assisted_candidate`，不保存非必要姓名。 | — |
 | `source_title` | string | 否 | 證據來源名稱。 | — |
 | `source_url` | uri | 否 | 證據來源網址。 | 絕對 URL |
 | `record_status` | string | 是 | 資料生命週期狀態。 | `draft`、`verified`、`derived`、`archived` |
@@ -138,7 +138,31 @@
 | `created_at` | datetime | 是 | 專案紀錄建立時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `updated_at` | datetime | 是 | 專案紀錄最後更新時間，使用 UTC ISO 8601。 | ISO 8601 |
 | `schema_version` | string | 是 | 此筆紀錄遵循的資料結構版本。 | — |
-| `notes` | string | 否 | 補充說明、限制或資料處理註記。 | — |
+| `notes` | string | 否 | 補充說明、限制或資料處理註記；未覆核候選必須明示「待人工覆核」。 | — |
+
+### SDG 候選發布規則
+
+- `rule_based` 且未人工覆核的紀錄只能是 `draft`。
+- 候選可源自真實活動，因此 `is_example=false`；但候選數不得視為正式涵蓋或成效。
+- 沒有活動成果證據時，`indicator_name_zh`、`observed_value` 與 `observed_unit` 保持空值。
+- 只有人工覆核後才可使用 `human_review` 或 `mixed`，並需記錄覆核角色、日期與理由。
+
+### CommunitySDGReviews 人工審查台帳
+
+人工審查台帳位於 `research/reviews/CommunitySDGReviews.csv`，契約為 `data/schema/CommunitySDGReviews.schema.json`。Markdown 覆核清單與 `CommunitySDGs` CSV／JSON 都是衍生輸出，不得取代此台帳。
+
+| 欄位群組 | 說明 |
+| --- | --- |
+| `community_sdg_id`、`activity_id` | 連結候選與活動的穩定識別碼；每筆候選恰有一列。 |
+| `review_decision` | `pending`、`accept`、`modify`、`reject`、`defer`。 |
+| `reviewed_sdg_*`、`reviewed_alignment_type` | 接受或修改後的對應；其他決策留空。 |
+| `reviewed_confidence_score` | 人工審查後信心值；只能由理由與證據支持。 |
+| `evidence_*` | 審查採用的最高證據層級、標題與 URL；正式映射需 A 或 B 級。 |
+| `review_rationale_zh`、`reviewer_role`、`reviewed_on` | 決策理由、去識別角色與日期。 |
+| `second_review_*` | 高影響或爭議映射的第二階段抽查狀態、角色與日期。 |
+| `notes`、`schema_version` | 限制、衝突、TODO 與台帳 schema 版本。 |
+
+`pending` 不得填寫人工欄位；`accept` 必須維持候選對應；`modify` 必須改變 goal、target 或 alignment；`reject` 與 `defer` 不得填寫審查後對應。合併腳本不得修改人工台帳。
 
 ## CommunityFunding
 

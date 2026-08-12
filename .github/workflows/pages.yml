@@ -37,8 +37,11 @@ jobs:
         with:
           node-version: 22.13.0
 
-      - name: Validate research data
-        run: node research/scripts/validate-data-layer.mjs
+      - name: Rebuild and validate research data
+        run: |
+          node research/scripts/build-community-activities.mjs
+          node research/scripts/build-community-sdg-candidates.mjs
+          node research/scripts/validate-data-layer.mjs
 
       - name: Build static website
         run: node research/scripts/build-static-site.mjs
